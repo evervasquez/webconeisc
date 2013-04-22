@@ -1,42 +1,15 @@
-<div class="container">
-    <div class="row">
-        <h2>Inscripción</h2>
-        <div class="span7">
-            <h3>Costos</h3>
-            <div style="text-align:center">
-                <div class="image_wrapper">
-                    <img src="<?php echo base_url()?>assets/img/costo inscripcion.png" alt="Costo de Inscripcion" />
-                </div>
-            </div>
-        </div>
-        <div class="span5">
-            <h3>Inscríbase...</h3>
-                <select name="busqueda" id="busqueda">
-                    <option value="">:: Seleccione ::</option>
-                    <option value="1">Email</option>
-                    <option value="2">DNI</option>
-                </select>
-                <label>
-                    <input type="text" id="parametro" name="parametro"/>
-                </label>
-                <input type="button" value="Buscar" class="btn" id="buscarInscrito"/>
-            <div id="msg"></div>
-        </div>
-    </div>
-
-    <script type="text/javascript">
-        $(document).ready(function(){
-            alert('');
-            $("#menu_inscripcion").addClass('active');
+<script type="text/javascript">
+    !function ($) {
+        $(function(){
             $("select").val(0);
             $("input:text").val('');
             $("#busqueda").change(function(){
                 $("#parametro").val('');
                 if($(this).val()==1){
-                    $("#parametro").email().attr('maxlength','45').focus();
+                    $("#parametro").attr('maxlength','45').focus();
                 }
                 if($(this).val()==2){
-                    $("#parametro").solonumeros().attr('maxlength','8').focus();
+                    $("#parametro").attr('maxlength','8').focus();
                 }
             });
 
@@ -47,7 +20,7 @@
                 if(bval){
                     $.ajax({
                         type:"POST",
-                        url:'inscripcion/buscar.php',
+                        url:'<?php echo base_url();?>inscripcion/validaInscrito',
                         data:{
                             busqueda:$("#busqueda").val(),
                             parametro:$("#parametro").val()
@@ -61,6 +34,37 @@
                     });
                 }
             });
-        });
-    </script>
+        })
+    }(window.jQuery)
+</script>
+<div class="container">
+    <div class="navbar-inner">
+        <div class="row-fluid">
+            <h2>Inscripción</h2>
+            <div class="span8">
+                <h3>Costos</h3>
+                <div style="text-align:center">
+                    <div class="image_wrapper">
+                        <img src="<?php echo base_url() ?>assets/img/costo inscripcion.png" alt="Costo de Inscripcion" />
+                    </div>
+                </div>
+            </div>
+            <div class="span3">
+                <h3>Inscríbase...</h3>
+                <div class="control-group">
+                    <select name="busqueda" id="busqueda">
+                        <option value="0">:: Seleccione ::</option>
+                        <option value="1">Email</option>
+                        <option value="2">DNI</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <input type="text" id="parametro" name="parametro" class=""/>
+                </div>
+                <input type="button" value="Buscar" class="btn btn-primary" id="buscarInscrito"/>
+                <div id="msg"></div>
+            </div>
+        </div>
+        <br/>
+    </div>
 </div>
