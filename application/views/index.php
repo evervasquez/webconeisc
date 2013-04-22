@@ -64,11 +64,11 @@
                             </div>
                             <div class="nav-collapse collapse">
                                 <ul class="nav">
-                                    <li class="active"><a href="#">Inicio</a></li>
+                                    <li class="active"><a href="<?php echo base_url() ?>">Inicio</a></li>
                                     <li class="dropdown">
                                         <a href="javascript:void" class="dropdown-toggle" data-toggle="dropdown">XXI Coneisc<b class="caret"></b></a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="<?php echo base_url() ?>index.php/web/presentacion">Prentación</a></li>
+                                            <li><a href="<?php echo base_url() ?>web/presentacion">Prentación</a></li>
                                             <li><a href="#">Cronograma</a></li>
                                         </ul>
                                     </li>
