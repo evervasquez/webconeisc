@@ -81,7 +81,7 @@
                                     </li>
                                     <li><a href="#">Papers</a></li>
                                     <li><a href="#">Eventos</a></li>
-                                    <li><a href="#">Inscripción</a></li>
+                                    <li><a href="<?php echo base_url() ?>inscripcion">Inscripción</a></li>
                                     <li><a href="#">Costos de Vida</a></li>
                                     <li><a href="#">Galería</a></li>
                                     <li><a href="#">Contáctenos</a></li>
