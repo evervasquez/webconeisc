@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap.css">
         <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap-responsive.css">
         <link rel="stylesheet" href="<?php echo base_url()?>assets/css/jquery-ui.custom.css">
+        <link rel="stylesheet" href="<?php echo base_url()?>assets/css/main.css">
         <link rel="stylesheet" href="<?php echo base_url()?>assets/css/fanbox.css" type="text/css" media="screen">
         <div id='facebook_box' class="slide_likebox">
             <img src='<?php echo base_url()?>assets/img/fb_tab.png' style='float:left;'/>
@@ -68,19 +69,19 @@
                             </div>
                             <div class="nav-collapse collapse">
                                 <ul class="nav">
-                                    <li class="active"><a href="<?php echo base_url() ?>">Inicio</a></li>
-                                    <li class="dropdown">
+                                    <li id="li_inicio"><a href="<?php echo base_url() ?>">Inicio</a></li>
+                                    <li id="li_coneisc" class="dropdown">
                                         <a href="javascript:void" class="dropdown-toggle" data-toggle="dropdown">XXI Coneisc<b class="caret"></b></a>
                                         <ul class="dropdown-menu">
                                             <li><a href="<?php echo base_url() ?>web/presentacion">Prentación</a></li>
-                                            <li><a href="#">Cronograma</a></li>
+                                            <li><a href="<?php echo base_url() ?>web/cronograma">Cronograma</a></li>
                                         </ul>
                                     </li>
-                                    <li class="dropdown">
+                                    <li id="li_nosotros" class="dropdown">
                                         <a href="javascript:void" class="dropdown-toggle" data-toggle="dropdown">Nosotros<b class="caret"></b></a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#">Misión y Visión</a></li>
-                                            <li><a href="#">Comisión Organizadora</a></li>
+                                            <li><a href="<?php echo base_url() ?>web/mision_vision">Misión y Visión</a></li>
+                                            <li><a href="<?php echo base_url() ?>web/comision_organizadora">Comisión Organizadora</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="#">Papers</a></li>
@@ -103,6 +104,20 @@
             </div>
         </div>
 
+<<<<<<< HEAD
+=======
+        <script src="<?php echo base_url()?>assets/js/jquery.js"></script>
+<!--        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
+        <?php 
+        echo '<script>
+            !function ($) {
+                $(function(){
+                    $("#'. $active .'").addClass("active")
+                })
+            }(window.jQuery)
+            </script>';
+        ?>
+>>>>>>> 6feefe082d0eba6edc264ff41788fb476890c560
         <script>
             jQuery.noConflict();
             jQuery(function (){jQuery(".slide_likebox").hover(function(){jQuery(".slide_likebox").stop(true, false).animate({right:"0"},"medium")},

@@ -10,12 +10,42 @@ class web extends Main_Controller {
     }
 
     public function index() {
-        $data['contenido'] = 'web/index.php';
+        $data = array(
+            'contenido' => 'web/index.php',
+            'active' => 'li_inicio'
+        );
         $this->load->view('index', $data);
     }
 
     public function presentacion() {
-        $data['contenido'] = 'web/presentacion.php';
+        $data = array(
+            'contenido' => 'web/presentacion.php',
+            'active' => 'li_coneisc'
+        );
+        $this->load->view('index', $data);
+    }
+    
+    public function cronograma() {
+        $data = array(
+            'contenido' => 'web/cronograma.php',
+            'active' => 'li_coneisc'
+        );
+        $this->load->view('index', $data);
+    }
+    
+    public function mision_vision() {
+        $data = array(
+            'contenido' => 'web/mv.php',
+            'active' => 'li_nosotros'
+        );
+        $this->load->view('index', $data);
+    }
+    
+    public function comision_organizadora() {
+        $data = array(
+            'contenido' => 'web/co.php',
+            'active' => 'li_nosotros'
+        );
         $this->load->view('index', $data);
     }
 

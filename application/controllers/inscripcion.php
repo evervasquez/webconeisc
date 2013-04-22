@@ -55,4 +55,9 @@ class inscripcion extends CI_Controller {
         }
     }
 
+    public function nuevo() {
+        $data['contenido'] = 'web/inscripcion/nuevo.php';
+        $this->load->view('index', $data);
+    }
+    
 }
