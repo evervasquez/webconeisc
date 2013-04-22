@@ -86,7 +86,7 @@
                                     </li>
                                     <li><a href="#">Papers</a></li>
                                     <li><a href="#">Eventos</a></li>
-                                    <li><a href="<?php echo base_url() ?>inscripcion">Inscripción</a></li>
+                                    <li id="li_inscripcion"><a href="<?php echo base_url() ?>inscripcion">Inscripción</a></li>
                                     <li><a href="#">Costos de Vida</a></li>
                                     <li><a href="#">Galería</a></li>
                                     <li><a href="#">Contáctenos</a></li>
@@ -104,10 +104,6 @@
             </div>
         </div>
 
-<<<<<<< HEAD
-=======
-        <script src="<?php echo base_url()?>assets/js/jquery.js"></script>
-<!--        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
         <?php 
         echo '<script>
             !function ($) {
@@ -117,7 +113,6 @@
             }(window.jQuery)
             </script>';
         ?>
->>>>>>> 6feefe082d0eba6edc264ff41788fb476890c560
         <script>
             jQuery.noConflict();
             jQuery(function (){jQuery(".slide_likebox").hover(function(){jQuery(".slide_likebox").stop(true, false).animate({right:"0"},"medium")},

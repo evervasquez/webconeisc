@@ -6,10 +6,11 @@ class inscripcion extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('inscripcion');
+        $this->load->model('inscripcion_model');
     }
 
     public function index() {
+        $data['active'] = 'li_inscripcion';
         $data['contenido'] = 'web/inscripcion/index.php';
         $this->load->view('index', $data);
     }
