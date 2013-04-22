@@ -12,10 +12,9 @@ class inscripcion extends CI_Controller {
         $data['contenido'] = 'web/inscripcion/index.php';
         $this->load->view('index', $data);
     }
-
-    public function presentacion() {
-        $data['contenido'] = 'web/presentacion.php';
+    
+    public function nuevo() {
+       $data['contenido'] = 'web/inscripcion/nuevo.php';
         $this->load->view('index', $data);
     }
-
 }

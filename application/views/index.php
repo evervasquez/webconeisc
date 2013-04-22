@@ -16,6 +16,7 @@
         
         <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap.css">
         <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap-responsive.css">
+        <link rel="stylesheet" href="<?php echo base_url()?>assets/css/main.css">
         <link rel="stylesheet" href="<?php echo base_url()?>assets/css/fanbox.css" type="text/css" media="screen">
         <div id='facebook_box' class="slide_likebox">
             <img src='<?php echo base_url()?>assets/img/fb_tab.png' style='float:left;'/>
