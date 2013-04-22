@@ -64,19 +64,19 @@
                             </div>
                             <div class="nav-collapse collapse">
                                 <ul class="nav">
-                                    <li class="active"><a href="<?php echo base_url() ?>">Inicio</a></li>
-                                    <li class="dropdown">
+                                    <li id="li_inicio"><a href="<?php echo base_url() ?>">Inicio</a></li>
+                                    <li id="li_coneisc" class="dropdown">
                                         <a href="javascript:void" class="dropdown-toggle" data-toggle="dropdown">XXI Coneisc<b class="caret"></b></a>
                                         <ul class="dropdown-menu">
                                             <li><a href="<?php echo base_url() ?>web/presentacion">Prentación</a></li>
-                                            <li><a href="#">Cronograma</a></li>
+                                            <li><a href="<?php echo base_url() ?>web/cronograma">Cronograma</a></li>
                                         </ul>
                                     </li>
-                                    <li class="dropdown">
+                                    <li id="li_nosotros" class="dropdown">
                                         <a href="javascript:void" class="dropdown-toggle" data-toggle="dropdown">Nosotros<b class="caret"></b></a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#">Misión y Visión</a></li>
-                                            <li><a href="#">Comisión Organizadora</a></li>
+                                            <li><a href="<?php echo base_url() ?>web/mision_vision">Misión y Visión</a></li>
+                                            <li><a href="<?php echo base_url() ?>web/comision_organizadora">Comisión Organizadora</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="#">Papers</a></li>
@@ -99,7 +99,17 @@
             </div>
         </div>
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script src="<?php echo base_url()?>assets/js/jquery.js"></script>
+<!--        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
+        <?php 
+        echo '<script>
+            !function ($) {
+                $(function(){
+                    $("#'. $active .'").addClass("active")
+                })
+            }(window.jQuery)
+            </script>';
+        ?>
         <script>
             jQuery.noConflict();
             jQuery(function (){jQuery(".slide_likebox").hover(function(){jQuery(".slide_likebox").stop(true, false).animate({right:"0"},"medium")},
