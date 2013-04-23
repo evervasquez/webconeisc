@@ -108,4 +108,92 @@ class inscripcion extends CI_Controller {
         }
     }
     
+    public function guardar(){
+        if(isset($_POST)){
+            $inscripcion = $this->inscripcion_model->insertInscripcion($_POST);
+            if($inscripcion->num_rows()>0){
+                foreach ($inscripcion->result_array() as $f) {
+                    //Obtenemos los datos
+                    $idmd5=$f['idmd5'];
+                    $email=$f['email'];
+                    $usuario=$f['nombres'].' '.$f['apellidos'];
+                    $cuerpo = "<p>El usuario «{$usuario}» del CONEISC (probablemente tú mismo)<br/>
+                                    ha registrado esta dirección e-mail como suya.<br/><br/>
+
+                                    Para confirmar que esta dirección e-mail está realmente<br/>
+                                    asociada a esa cuenta y activar el envío de e-mails<br/>
+                                    desde CONEISC.PE, sigue este enlace:<br/><br/>
+
+                                    <a href='http://{$_SERVER['HTTP_HOST']}/inscripcion/confirmarEmail?id=$idmd5' target='_blank'>http://{$_SERVER['HTTP_HOST']}/inscripcion/confirmarEmail?id=$idmd5</a>  <br/><br/>
+
+                                    Si la cuenta no es tuya, *no* sigas el enlace.
+
+                                </p>";
+                    //Cargamos la librería
+                    $this->load->library('email');
+                    //Configuramos 
+                    $config['useragent'] = 'CONEISC';
+                    $config['mailtype'] = 'html';
+                    $this->email->initialize($config);
+                    //llenamos datos
+                    $this->email->from('WWW.CONEISC.PE', 'CONEISC');
+                    $this->email->to($email);
+                    $this->email->subject('Confirmación de la dirección de e-mail registrada en Coneisc.pe');
+                    $this->email->message($cuerpo);
+                    if($this->email->send()){
+                        $data['mensaje'] = "Usted fue registrado con éxito en el CONEISC. Por favor revise su correo eléctronico para continuar con la inscripcion";
+                        $data['active'] = 'li_inscripcion';
+                        $data['contenido'] = 'web/inscripcion/mensaje.php';
+                        $this->load->view('index', $data);
+                    }else{
+                        $this->email->send();
+                        $data['mensaje'] = $this->email->print_debugger();
+                        $data['active'] = 'li_inscripcion';
+                        $data['contenido'] = 'web/inscripcion/mensaje.php';
+                        $this->load->view('index', $data);
+                    }
+                }
+            }
+        }else{
+            $this->index();
+        }
+    }
+    
+    public function confirmarEmail(){
+        if(isset($_GET['id'])){
+            //Validamos que el estado sea 0
+            $datos = $this->inscripcion_model->getInscripcion(array('idmd5'=>$_GET['id']));
+            if($datos->num_rows()>0){
+                foreach ($datos->result_array() as $row) {
+                    if($row['estado']==0){
+                        //Actualizamos si es el estado es 0
+                        $inscripcion = $this->inscripcion_model->updateInscripcion(array('estado'=>'1'),array('idmd5'=>$_GET['id']));
+                        if($inscripcion){
+                            $this->paginaBlanco("Tu dirección e-mail ha sido confirmada. Dentro de las proximas 48 horas le estaremos enviando un mensaje confirmando la inscripcion al coneisc.");
+                        }else{
+                            $this->index();
+                        }
+                    }else{
+                        $this->paginaBlanco("Tu dirección e-mail ha sido confirmada.");
+                        $data['mensaje'] = "Tu dirección e-mail ha sido confirmada.";
+                        $data['active'] = 'li_inscripcion';
+                        $data['contenido'] = 'web/inscripcion/mensaje.php';
+                        $this->load->view('index', $data);
+                    }
+                }exit;
+            }else{
+                $this->index();
+            }
+        }else{
+            $this->index();
+        }
+    }
+    
+    public function paginaBlanco($mensaje){
+        $data['mensaje'] = $mensaje;
+        $data['active'] = 'li_inscripcion';
+        $data['contenido'] = 'web/inscripcion/mensaje.php';
+        $this->load->view('index', $data);
+    }
+    
 }

@@ -1,7 +1,7 @@
 !function ($) {
     $(function(){
         $("#fecha_deposito").datepicker({dateFormat: 'dd-mm-yy',changeMonth:true,changeYear:true});
-        $("#id_institucion_group").hide();
+        $("#id_institucion_group, #loadInstitucion").hide();
         $("#dni").solonumeros().blur(function(){
             if($(this).val().length==8){
                 $.ajax({
@@ -11,7 +11,7 @@
                         dni:$(this).val()
                     },
                     beforeSend:function(){
-                        $("#loadDni").html('<img src="images/ajax-loader.gif"/>').show();
+                        $("#loadDni").html('<img src="'+url+'assets/img/load.gif"/>').show();
                     },
                     success:function(response){
                         $("#loadDni").html(response);
@@ -30,7 +30,7 @@
                     email:$(this).val()
                 },
                 beforeSend:function(){
-                    $("#loadEmail").html('<img src="images/ajax-loader.gif"/>').show();
+                    $("#loadEmail").html('<img src="'+url+'assets/img/ajax-loader.gif"/>').show();
                 },
                 success:function(response){
                     $("#loadEmail").html(response);
@@ -98,13 +98,13 @@
             bval = bval && $( "#monto" ).combo();
             if(bval && $("#loadDni").html()!='Correcto'){
                 bval=false;
-                $("#dni").addClass('ui-state-error ui-icon-alert').focus();
+                $("#dni").parents('div[class=control-group]').removeClass('success').addClass('error');
             }
             if(bval && $("#loadEmail").html()!='Correcto'){
                 bval=false;
-                $("#email").addClass('ui-state-error ui-icon-alert').focus();
+                $("#email").parents('div[class=control-group]').removeClass('success').addClass('error');
             }
-            if(true) {
+            if(bval) {
                 $("#form").submit();
             }
         });
