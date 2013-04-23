@@ -1,7 +1,7 @@
 !function ($) {
     $(function(){
         $("#fecha_deposito").datepicker({dateFormat: 'dd-mm-yy',changeMonth:true,changeYear:true});
-        $("#id_institucion_group, #loadInstitucion").hide();
+        $("#id_institucion_group, #loadInstitucion, #loadDni, #loadEmail").hide();
         $("#dni").solonumeros().blur(function(){
             if($(this).val().length==8){
                 $.ajax({
@@ -14,11 +14,16 @@
                         $("#loadDni").html('<img src="'+url+'assets/img/load.gif"/>').show();
                     },
                     success:function(response){
-                        $("#loadDni").html(response);
+                        if(response=='Correcto'){
+                            $("#loadDni").removeClass('alert alert-error').addClass('alert alert-success');
+                        }else{
+                            $("#loadDni").removeClass('alert alert-success').addClass('alert alert-error');
+                        }
+                        $("#loadDni").html(response).show();
                     }
                 });
             }else{
-                $("#loadDni").html('Ingrese 8 digitos de su dni');
+                $("#loadDni").html('Ingrese 8 digitos de su dni').removeClass('alert alert-success').addClass('alert alert-error').show();
             }
         });
     
@@ -33,9 +38,26 @@
                     $("#loadEmail").html('<img src="'+url+'assets/img/ajax-loader.gif"/>').show();
                 },
                 success:function(response){
-                    $("#loadEmail").html(response);
+                    if(response=='Correcto'){
+                        $("#loadEmail").removeClass('alert alert-error').addClass('alert alert-success');
+                    }else{
+                        $("#loadEmail").removeClass('alert alert-success').addClass('alert alert-error');
+                    }
+                    $("#loadEmail").html(response).show();
                 }
             });
+        });
+        
+        $("#confirma_email").keyup(function(){
+            if($("#loadEmail").html()=='Correcto'){
+                if($("#email").val()!=$("#confirma_email").val()) {
+                    $("#confirma_email").parents('div[class*=control-group]').removeClass('success').addClass('error');
+                }else{
+                    $("#confirma_email").parents('div[class*=control-group]').removeClass('error').addClass('success');
+                }
+            }else{
+                $("#confirma_email").parents('div[class*=control-group]').removeClass('error').removeClass('success');
+            }
         });
         $("#iddepartamento").change(function(){
             if($(this).val()!=26){
@@ -78,9 +100,20 @@
             bval = bval && $( "#idtipo_inscripcion" ).combo();
             bval = bval && $( "#nombres" ).required();
             bval = bval && $( "#apellidos" ).required();
+            bval = bval && $( "#email" ).email();
+            if(bval && $("#loadEmail").html()=='Correcto'){
+                bval = bval && $( "#confirma_email" ).email();
+            }else{
+                alert('Su email ya fue registrado');
+                $("#loadEmail").focus();
+                bval = false;
+            }
+            if(bval && $( "#email" ).val()!=$( "#confirma_email" ).val()) {
+                alert('Los emails no coinciden');
+                bval = false;
+            }
             bval = bval && $( "#dni" ).required();
             bval = bval && $( "#telefono" ).required();
-            bval = bval && $( "#email" ).required();
             if(bval && !$("[name=sexo]").is(":checked")){
                 bval = false;
                 alert('Seleccione sexo');

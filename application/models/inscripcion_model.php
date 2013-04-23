@@ -56,14 +56,11 @@ class inscripcion_model extends CI_Model{
             }
         }
         $this->db->update('inscripcion',$datos);
-        return true;
-//        if ($this->db->affected_rows() > 0) {
-//            echo 'afecta';
-//            return true;
-//        } else {
-//            echo 'no afecta';
-//            return false;
-//        }
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
 }
