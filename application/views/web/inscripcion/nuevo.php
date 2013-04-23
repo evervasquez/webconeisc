@@ -1,5 +1,5 @@
-<script type="text/javascript">var url = <?php echo base_url() ?></script>
-<script src="<?php echo base_url()?>assets/js/inscripcion/inscripcion.js" type="text/javascript"></script>
+
+<script src="<?php echo base_url() ?>assets/js/inscripcion/inscripcion.js" type="text/javascript"></script>
 <div class="container">
     <div class="navbar-inner">  
 
@@ -19,21 +19,21 @@
                                     <div class="controls">
                                         <select name="idtipo_inscripcion" id="idtipo_inscripcion" class="span11">
                                             <option value=""> - - Seleccione - -</option>
-                                            <option value="1">ESRTUDIANTE</option>
-                                            <option value="2">POFESIONAL</option>
+                                            <option value="1">ESTUDIANTE</option>
+                                            <option value="2">PROFESIONAL</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <label for="nombres" class="control-label">Nombres:</label>
+                                    <label for="nombres" class="control-label" >Nombres:</label>
                                     <div class="controls">
-                                        <input type="text" id="nombres" name="nombres" class="span11" maxlength="45" style="text-transform: uppercase"/>
+                                        <input type="text" id="nombres" name="nombres" class="span11" maxlength="45" <?php if (isset($nombres)) {?> value="<?php echo $nombres ?>" <?php } ?> style="text-transform: uppercase"/>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label for="apellidos" class="control-label">Apellidos:</label>
                                     <div class="controls">
-                                        <input type="text" id="apellidos" name="apellidos" class="span11" maxlength="80" style="text-transform: uppercase"/>
+                                        <input type="text" id="apellidos" name="apellidos" class="span11" maxlength="80" <?php if (isset($apellidos)) {?> value="<?php echo $apellidos ?>" <?php } ?> style="text-transform: uppercase"/>
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -65,12 +65,31 @@
                                 <div class="control-group">
                                     <label class="control-label">Sexo:</label>
                                     <div class="controls">
-                                        <label class="radio">
-                                            <input type="radio" id="sexoM" name="sexo" value="M" />Masculino
-                                        </label>
-                                        <label class="radio">
-                                            <input type="radio" id="sexoF" name="sexo" value="F" />Femenino
-                                        </label>
+                                        
+                                            <?php if (isset($sexo)) {
+                                                if($sexo=='male'){  ?>
+                                                <label class="radio">
+                                                    <input type="radio" id="sexoM" checked="checked" name="sexo" value="M" />Masculino
+                                                </label>
+                                                <label class="radio">
+                                                    <input type="radio" id="sexoF" name="sexo" value="F" />Femenino
+                                                </label>
+                                                    <?php } else { ?>
+                                                <label class="radio">
+                                                    <input type="radio" id="sexoM" name="sexo" value="M" />Masculino
+                                                </label>
+                                                <label class="radio">
+                                                    <input type="radio" id="sexoF" checked="checked" name="sexo" value="F" />Femenino
+                                                </label>
+                                                    <?php } ?>
+                                            <?php } else { ?>
+                                                <label class="radio">
+                                                    <input type="radio" id="sexoM" name="sexo" value="M" />Masculino
+                                                </label>
+                                                <label class="radio">
+                                                    <input type="radio" id="sexoF" name="sexo" value="F" />Femenino
+                                                </label>
+                                            <?php } ?>
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -85,7 +104,7 @@
                                         <select name="idinstitucion" id="idinstitucion" class="span11">
                                             <option value=""> - - Seleccione - -</option>
                                         </select>
-                                        <img src="<?php echo base_url()?>assets/img/load.gif" id="loadInstitucion"/>
+                                        <img src="<?php echo base_url() ?>assets/img/load.gif" id="loadInstitucion"/>
                                     </div>
                                 </div>
                                 <div id="id_institucion_group" class="control-group">
@@ -137,7 +156,7 @@
                             <div class="form-actions">
                                 <div class="buttons">
                                     <button class="btn btn-primary" type="button" id="registrar">Registrar</button>
-                                    <a class="cancel btn" href="<?php echo base_url()?>inscripcion">Cancelar</a>
+                                    <a class="cancel btn" href="<?php echo base_url() ?>inscripcion">Cancelar</a>
                                 </div>
                             </div>
                             <input id="id_token" type="hidden" class=" " value="2815c719c46e47c66" name="token" />
@@ -158,7 +177,7 @@
                                         </form>
                                     </li>
                                     <li>
-                                        <form class="connect-button" name="login" method="POST" action="/social/facebook/redirect/">
+                                        <form class="connect-button" name="login" method="POST" action="<?php echo base_url() ?>social/facebook">
                                             <input type="hidden" name="next" value="/account/dispatch/">
                                             <button type="submit" class="aui-button aui-style facebook-button">
                                                 Facebook
@@ -166,8 +185,7 @@
                                         </form>
                                     </li>
                                     <li>
-                                        <form class="connect-button" name="login" method="POST" action="/social/twitter/redirect/">
-
+                                        <form class="connect-button" name="login" method="POST" action="<?php echo base_url() ?>social/twitter">
                                             <input type="hidden" name="next" value="/account/dispatch/">
                                             <button type="submit" class="aui-button aui-style twitter-button">
                                                 Twitter

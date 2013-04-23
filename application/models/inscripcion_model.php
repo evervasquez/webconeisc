@@ -13,8 +13,8 @@ class inscripcion_model extends CI_Model{
         if (isset($datos['idinstitucion'])) {$idinstitucion = $datos["idinstitucion"];} else {$idinstitucion = null;}
         if (isset($datos['institucion'])) {$institucion = $datos["institucion"];} else {$institucion = null;}
         if (isset($datos['idempleado'])) {$idempleado = $datos["idempleado"];} else {$idempleado = null;}
-        $nombres = $datos["nombres"];
-        $apellidos = $datos["apellidos"];
+        $nombres = strtoupper($datos["nombres"]);
+        $apellidos = strtoupper($datos["apellidos"]);
         $dni = $datos["dni"];
         $sexo = $datos["sexo"];
         $fecha_inscripcion = date('Y-m-d');
