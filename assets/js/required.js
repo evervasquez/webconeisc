@@ -61,7 +61,7 @@ var _msg_info="<span class='box box-info' style='width:100% !important;'>Mensaje
             var valor = $.trim( $(this).val() );
             if ( valor.length <1) {
 //                $(this).addClass('ui-state-error ui-icon-alert');
-                $(this).closest('div').removeClass('success').addClass('error');
+                $(this).parents('div[class*=control-group]').removeClass('success').addClass('error');
                 if(first) {
                     $(this).focus();
                     first = false;
@@ -77,7 +77,7 @@ var _msg_info="<span class='box box-info' style='width:100% !important;'>Mensaje
                     }
                     if(isNaN(valor)) {
 //                        $(this).addClass('ui-state-error ui-icon-alert');
-                        $(this).closest('div').removeClass('success').addClass('error');
+                        $(this).parents('div[class*=control-group]').removeClass('success').addClass('error');
                         if(first) {
                             $(this).focus();
                             first = false;
@@ -87,13 +87,13 @@ var _msg_info="<span class='box box-info' style='width:100% !important;'>Mensaje
                     else {
                         if(valoresDefault.aceptaCero) {
 //                            $(this).removeClass('ui-state-error ui-icon-alert');
-                            $(this).closest('div').removeClass('error').addClass('success');
+                            $(this).parents('div[class*=control-group]').removeClass('error').addClass('success');
                             estado = estado && true;
                         }
                         else {
                             if(valor == 0) {
 //                                $(this).addClass('ui-state-error ui-icon-alert');
-                                $(this).closest('div').removeClass('success').addClass('error');
+                                $(this).parents('div[class*=control-group]').removeClass('success').addClass('error');
                                 if(first) {
                                     $(this).focus();
                                     first = false;
@@ -102,7 +102,7 @@ var _msg_info="<span class='box box-info' style='width:100% !important;'>Mensaje
                             }
                             else {
 //                                $(this).removeClass('ui-state-error ui-icon-alert');
-                                $(this).closest('div').removeClass('error').addClass('success');
+                                $(this).parents('div[class*=control-group]').removeClass('error').addClass('success');
                                 estado = estado && true;
                             }
                         }
@@ -110,7 +110,7 @@ var _msg_info="<span class='box box-info' style='width:100% !important;'>Mensaje
                 }
                 else {
 //                    $(this).removeClass('ui-state-error ui-icon-alert');
-                    $(this).closest('div').removeClass('error').addClass('success');
+                    $(this).parents('div[class*=control-group]').removeClass('error').addClass('success');
                     estado = estado && true;
                 }
             }
@@ -126,7 +126,7 @@ var _msg_info="<span class='box box-info' style='width:100% !important;'>Mensaje
         this.each (function() {
             if ( $(this).val() == 0 ||$(this).val() == ''||$(this).val()==null) {
 //                $(this).addClass('ui-state-error ui-icon-alert');
-                $(this).closest('div').removeClass('success').addClass('error');
+                $(this).parents('div[class*=control-group]').removeClass('success').addClass('error');
                 if(first) {
                     $(this).focus();
                     first = false;
@@ -134,7 +134,7 @@ var _msg_info="<span class='box box-info' style='width:100% !important;'>Mensaje
                 estado = estado && false;
             }else {
 //                $(this).removeClass('ui-state-error ui-icon-alert');
-                $(this).closest('div').removeClass('error').addClass('success');
+                $(this).parents('div[class*=control-group]').removeClass('error').addClass('success');
                 estado = estado && true;
             }
         });

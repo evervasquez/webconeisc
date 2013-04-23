@@ -11,7 +11,7 @@
                 <section class="form-container">
                     <div class="span1"></div>
                     <div class="span6">
-                        <form id="registration-form" method="post" data-method="standard"  class="form-horizontal">
+                        <form id="form" method="post" data-method="standard"  class="form-horizontal" action="<?php echo base_url() ?>inscripcion/guardar">
                             <fieldset>
                                 <legend>Datos personales</legend>
                                 <div class="control-group">
@@ -40,7 +40,7 @@
                                     <label for="dni" class="control-label">DNI:</label>
                                     <div class="controls">
                                         <input type="text" id="dni" name="dni" class="span9" maxlength="8"/>
-                                        <div id="loadDni"></div>
+                                        <span id="loadDni"></span>
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -53,7 +53,7 @@
                                     <label for="email" class="control-label">E-mail:</label>
                                     <div class="controls">
                                         <input type="text" id="email" name="email" class="span9" maxlength="45"/>
-                                        <div id="loadEmail"></div>
+                                        <span id="loadEmail"></span>
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -79,6 +79,7 @@
                                         <select name="idinstitucion" id="idinstitucion" class="span9">
                                             <option value=""> - - Seleccione - -</option>
                                         </select>
+                                        <img src="<?php echo base_url()?>assets/img/load.gif" id="loadInstitucion"/>
                                     </div>
                                 </div>
                                 <div id="id_institucion_group" class="control-group">
