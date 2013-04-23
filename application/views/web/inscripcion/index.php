@@ -1,41 +1,40 @@
 <script type="text/javascript">
     !function ($) {
         $(function(){
-            $("select").val(0);
             $("input:text").val('');
-            $("#busqueda").change(function(){
-                $("#parametro").val('');
-                if($(this).val()==1){
-                    $("#parametro").attr('maxlength','45').focus();
-                }
-                if($(this).val()==2){
-                    $("#parametro").attr('maxlength','8').focus();
-                }
-            });
-
             $("#buscarInscrito").click(function(){
                 var bval = true;
-                bval = bval && $( "#busqueda" ).combo();
-                bval = bval && $( "#parametro" ).required();
+//                var filter = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+                bval = bval && $( "#email" ).email();
+//                if(filter.test($("#email").val())){
+//                    $("#email").removeClass('error').addClass('success');
+//                    bval = true;
+//                }else{
+//                    $("#email").parents('div[class*=control-group]').removeClass('success').addClass('error');
+//                    bval = false;
+//                }
                 if(bval){
                     $.ajax({
                         type:"POST",
                         url:'<?php echo base_url();?>inscripcion/validaInscrito',
                         data:{
-                            busqueda:$("#busqueda").val(),
-                            parametro:$("#parametro").val()
+                            email:$("#email").val()
                         },
                         beforeSend:function(){
-                            $("#msg").html('Buscando...');
+                            $("#msg").html('<img src="<?php echo base_url()?>assets/img/load.gif"/>');
                         },
                         success:function(response){
-                            $("#msg").html(response);
+                            if(response=='nuevo'){
+                                $("#form").submit();
+                            }else{
+                                $("#msg").html(response);
+                            }
                         }
                     });
                 }
             });
             
-            $("#parametro").keypress(function(e){
+            $("#email").keypress(function(e){
                 var tecla = (document.all) ? e.keyCode : e.which; 
                 if(tecla==13){
                     e.preventDefault();
@@ -58,18 +57,14 @@
                 </div>
             </div>
             <div class="span3">
-                <h3>Inscríbase...</h3>
-                <div class="control-group">
-                    <select name="busqueda" id="busqueda">
-                        <option value="0">:: Seleccione ::</option>
-                        <option value="1">Email</option>
-                        <option value="2">DNI</option>
-                    </select>
-                </div>
-                <div class="control-group">
-                    <input type="text" id="parametro" name="parametro" class=""/>
-                </div>
-                <input type="button" value="Buscar" class="btn btn-primary" id="buscarInscrito"/>
+                <h3>Consulte o Inscríbase</h3>
+                <p>Ingrese su email:</p>
+                <form action="<?php echo base_url()?>inscripcion/nuevo" method="post" id="form">
+                    <div class="control-group">
+                        <input type="text" id="email" name="email" placeholder="email"/>
+                    </div>
+                    <input type="button" value="Enviar" class="btn btn-primary" id="buscarInscrito"/>
+                </form>
                 <div id="msg"></div>
             </div>
         </div>

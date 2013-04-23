@@ -26,25 +26,6 @@ var _msg_info="<span class='box box-info' style='width:100% !important;'>Mensaje
 	};
 })( jQuery );
 
-(function( $ ){
-	$.fn.email = function() {
-		var xz = "!$%^*()+=[]\\\';,/{}|\":<>?~` ";	
-		  	
-		return this.each (function() {
-			$(this).keypress(function (e){
-				if (!e.charCode) k = String.fromCharCode(e.which);
-				else k = String.fromCharCode(e.charCode);
-										
-				if (xz.indexOf(k) != -1) e.preventDefault();
-				if (e.ctrlKey&&k=='v') e.preventDefault();
-									
-			});
-						
-			/*$(this).bind('contextmenu',function () {return false});*/
-		});	 
-	};
-})( jQuery );
-
 (function( $ ) {
     $.fn.required = function(opciones) {
         var estado = true;
@@ -138,6 +119,28 @@ var _msg_info="<span class='box box-info' style='width:100% !important;'>Mensaje
                 estado = estado && true;
             }
         });
+        return estado;
+    };
+})( jQuery );
+
+(function( $ ) {
+    $.fn.email = function() {
+        var estado = true;
+        var first = true;
+        var filter = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+        this.each (function() {
+            if ( $.trim( $(this).val())!='' && filter.test($(this).val()) ) {
+                $(this).parents('div[class*=control-group]').removeClass('error').addClass('success');
+                estado = estado && true;
+            }else {
+                $(this).parents('div[class*=control-group]').removeClass('success').addClass('error');
+                if(first) {
+                    $(this).focus();
+                    first = false;
+                }
+                estado = estado && false;
+            }
+        });        
         return estado;
     };
 })( jQuery );
