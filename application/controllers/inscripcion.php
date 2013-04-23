@@ -2,7 +2,7 @@
 
 if (!defined('BASEPATH'))die();
 
-class inscripcion extends CI_Controller {
+class inscripcion extends Main_Controller {
 
     public function __construct() {
         parent::__construct();

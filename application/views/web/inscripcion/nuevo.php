@@ -1,4 +1,4 @@
-<script type="text/javascript">var url = <?php echo base_url() ?></script>
+
 <script src="<?php echo base_url()?>assets/js/inscripcion/inscripcion.js" type="text/javascript"></script>
 <div class="container">
     <div class="navbar-inner">  
@@ -151,7 +151,7 @@
                                         </form>
                                     </li>
                                     <li>
-                                        <form class="connect-button" name="login" method="POST" action="/social/facebook/redirect/">
+                                        <form class="connect-button" name="login" method="POST" action="<?php echo base_url()?>social/facebook">
                                             <input type="hidden" name="next" value="/account/dispatch/">
                                             <button type="submit" class="aui-button aui-style facebook-button">
                                                 Facebook
