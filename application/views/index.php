@@ -16,6 +16,7 @@
         
         <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap.css">
         <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap-responsive.css">
+        <link rel="stylesheet" href="<?php echo base_url()?>assets/css/jquery-ui.custom.css">
         <link rel="stylesheet" href="<?php echo base_url()?>assets/css/main.css">
         <link rel="stylesheet" href="<?php echo base_url()?>assets/css/fanbox.css" type="text/css" media="screen">
         <div id='facebook_box' class="slide_likebox">
@@ -42,6 +43,9 @@
                 </span>
             </div>
         </div>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+        <script src="<?php echo base_url()?>assets/js/required.js"></script>
     </head>
     <body class="primary">
         <!--[if lt IE 7]>
@@ -65,24 +69,24 @@
                             </div>
                             <div class="nav-collapse collapse">
                                 <ul class="nav">
-                                    <li class="active"><a href="<?php echo base_url() ?>">Inicio</a></li>
-                                    <li class="dropdown">
+                                    <li id="li_inicio"><a href="<?php echo base_url() ?>">Inicio</a></li>
+                                    <li id="li_coneisc" class="dropdown">
                                         <a href="javascript:void" class="dropdown-toggle" data-toggle="dropdown">XXI Coneisc<b class="caret"></b></a>
                                         <ul class="dropdown-menu">
                                             <li><a href="<?php echo base_url() ?>web/presentacion">Prentación</a></li>
-                                            <li><a href="#">Cronograma</a></li>
+                                            <li><a href="<?php echo base_url() ?>web/cronograma">Cronograma</a></li>
                                         </ul>
                                     </li>
-                                    <li class="dropdown">
+                                    <li id="li_nosotros" class="dropdown">
                                         <a href="javascript:void" class="dropdown-toggle" data-toggle="dropdown">Nosotros<b class="caret"></b></a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#">Misión y Visión</a></li>
-                                            <li><a href="#">Comisión Organizadora</a></li>
+                                            <li><a href="<?php echo base_url() ?>web/mision_vision">Misión y Visión</a></li>
+                                            <li><a href="<?php echo base_url() ?>web/comision_organizadora">Comisión Organizadora</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="#">Papers</a></li>
                                     <li><a href="#">Eventos</a></li>
-                                    <li><a href="<?php echo base_url() ?>inscripcion">Inscripción</a></li>
+                                    <li id="li_inscripcion"><a href="<?php echo base_url() ?>inscripcion">Inscripción</a></li>
                                     <li><a href="#">Costos de Vida</a></li>
                                     <li><a href="#">Galería</a></li>
                                     <li><a href="#">Contáctenos</a></li>
@@ -100,7 +104,15 @@
             </div>
         </div>
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <?php 
+        echo '<script>
+            !function ($) {
+                $(function(){
+                    $("#'. $active .'").addClass("active")
+                })
+            }(window.jQuery)
+            </script>';
+        ?>
         <script>
             jQuery.noConflict();
             jQuery(function (){jQuery(".slide_likebox").hover(function(){jQuery(".slide_likebox").stop(true, false).animate({right:"0"},"medium")},
