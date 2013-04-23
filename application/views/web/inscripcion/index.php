@@ -34,7 +34,15 @@
                     });
                 }
             });
-        })
+            
+            $("#parametro").keypress(function(e){
+                var tecla = (document.all) ? e.keyCode : e.which; 
+                if(tecla==13){
+                    e.preventDefault();
+                    $("#buscarInscrito").trigger('click');
+                }
+            });
+        });
     }(window.jQuery)
 </script>
 <div class="container">
