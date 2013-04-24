@@ -42,6 +42,7 @@
             </div>
         </div>
         <link rel="stylesheet" href="<?php echo base_url()?>assets/css/main.css">
+        <script src="<?php echo base_url()?>assets/js/jquery.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
         <script src="<?php echo base_url()?>assets/js/required.js"></script>

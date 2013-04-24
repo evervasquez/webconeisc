@@ -5,6 +5,10 @@
 .imgsocial{
     padding: 3px;
 }
+.border-green{
+    border-color: green;
+    border-width: 2px;
+}
 .page-header {
     margin: 20px 0;
 }
