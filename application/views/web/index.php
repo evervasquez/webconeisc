@@ -2,27 +2,48 @@
             <!-- Carousel
             ================================================== -->
             <div id="myCarousel" class="carousel slide">
-            <div class="carousel-inner">
+            <div class="carousel-inner" id="crs">
                 <div class="item active">
-                    <img src="<?php echo base_url()?>assets/img/slider/portada.jpg" alt="Portada" width="100%"/>
+                        <img src="<?php echo base_url()?>assets/img/slider/portada.jpg" alt="Portada" width="100%" class="img"/>
                 </div>
                 <div class="item">
-                    <img src="<?php echo base_url()?>assets/img/slider/tarapoto.jpg" alt="Tarapoto" width="100%"/>
+                        <img src="<?php echo base_url()?>assets/img/slider/tarapoto.jpg" alt="Tarapoto" width="100%" class="img" />
+                
                 </div>
-<!--                <div class="item">
-                    <div class="row-fluid">
-                        <div class="span1"></div>
-                        <div class="span5">
-                            <img src="images/slider/papers.jpg" alt="Papers" class="img-polaroid"  width="100%" />
+                <div class="item">
+                    <div class="cont_crs">
+                        <div class="row-fluid page_slide">
+                            <div class="span1"></div>
+                            <div class="span5">
+                                <img src="<?php echo base_url()?>assets/img/slider/papers.jpg" alt="Papers" class="img-polaroid imgslider"  width="100%" />
+                            </div>
+                            <div class="span1"></div>
+                            <div class="span4 page_slide cont_slide">
+                                <h2>Papers</h2>
+                                <p class="text-justify pslide">Conoce las fechas importantes de nuestro Call For Papers, nuestro comité de programa internacional, formatos y demás</p>
+                                <a class="btn btn-large btn-primary" href="web/papers/">Acceder</a>
+                            </div>
+                            <div class="span1"></div>
                         </div>
-                        <div class="span5">
-                            <h2>Papers</h2>
-                            <p class="text-justify">Conoce las fechas importantes de nuestro Call For Papers, nuestro comité de programa internacional, formatos y demás</p>
-                            <a class="btn btn-large btn-primary" href="papers.php">Acceder</a>
-                        </div>
-                        <div class="span1"></div>
                     </div>
-                </div>-->
+                </div>
+                <div class="item">
+                    <div class="cont_crs">
+                        <div class="row-fluid page_slide">
+                            <div class="span1"></div>
+                            <div class="span5">
+                                <img src="<?php echo base_url()?>assets/img/slider/costos.jpg" alt="Papers" class="img-polaroid imgslider"  width="100%" />
+                            </div>
+                            <div class="span1"></div>
+                            <div class="span4 page_slide cont_slide">
+                                <h2>Costos de vida</h2>
+                                <p class="text-justify pslide">Contáctate con hoteles y restaurantes de la ciudad de Tarapoto, cotiza y planifica tu viaje.</p>
+                                <a class="btn btn-large btn-primary" href="web/costos_vida/">Acceder</a>
+                            </div>
+                            <div class="span1"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
             <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>

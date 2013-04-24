@@ -16,15 +16,13 @@
         
         <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap.css">
         <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap-responsive.css">
-        <link rel="stylesheet" href="<?php echo base_url()?>assets/css/jquery-ui.custom.css">
-        <link rel="stylesheet" href="<?php echo base_url()?>assets/css/main.css">
         <link rel="stylesheet" href="<?php echo base_url()?>assets/css/fanbox.css" type="text/css" media="screen">
         <div id='facebook_box' class="slide_likebox">
-            <img src='<?php echo base_url()?>assets/img/fb_tab.png' style='float:left;'/>
-            <div style='background: #3c5a98; height:325px; margin-left:38px;padding: 8px 5px 0pt 50px;border-radius: 0px 0px 0px 10px;'>
-                <span>
+            <img src='<?php echo base_url()?>assets/img/fb_tab.png' class="img_fanbox"/>
+            <div class="div_fanbox" style='background: #3c5a98;'>
+                <span class="fanbox_fb">
                     <div class='likeboxwrap'>
-                        <iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fxxiconeisc&amp;width=238&amp;colorscheme=light&amp;connections=12&amp;stream=false&amp;header=false&amp;height=350" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:240px; height:320px;">
+                        <iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fxxiconeisc&amp;width=238&amp;colorscheme=light&amp;connections=12&amp;stream=false&amp;header=false&amp;height=350" scrolling="no" frameborder="0" id="frame_fb">
                         </iframe>
                     </div>
                 </span>
@@ -32,8 +30,8 @@
         </div>
         <script src="<?php echo base_url()?>assets/js/fanbox_init.js"></script>
         <div id='twitter_box' class="slide_likebox2">
-            <img src='<?php echo base_url()?>assets/img/tw_tab.png' style='float:left;'/>
-            <div style='background: #00a0e8; height:325px; margin-left:38px;padding: 8px 5px 0pt 50px;border-radius: 0px 0px 0px 10px;'>
+            <img src='<?php echo base_url()?>assets/img/tw_tab.png'  class="img_fanbox"/>
+            <div class="div_fanbox" style='background: #00a0e8;'>
                 <span>
                     <div class='likeboxwrap'>
                         <div id="twitterfanbox">
@@ -43,6 +41,7 @@
                 </span>
             </div>
         </div>
+        <link rel="stylesheet" href="<?php echo base_url()?>assets/css/main.css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
         <script src="<?php echo base_url()?>assets/js/required.js"></script>
@@ -58,7 +57,7 @@
                     <a href="http://www.coneisc.pe"><img src="<?php echo base_url()?>assets/img/logo.png" /></a>
                 </div>
                 <div class="navbar">
-                    <div class="navbar-inner">
+                    <div class="navbar-inner nvinner">
                         <div class="container" style="width: auto;">
                             <div class="pull-left">
                                 <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -69,27 +68,27 @@
                             </div>
                             <div class="nav-collapse collapse">
                                 <ul class="nav">
-                                    <li id="li_inicio"><a href="<?php echo base_url() ?>">Inicio</a></li>
+                                    <li id="li_inicio"><a href="<?php echo base_url() ?>"><i class="icon-home"></i> Inicio</a></li>
                                     <li id="li_coneisc" class="dropdown">
-                                        <a href="javascript:void" class="dropdown-toggle" data-toggle="dropdown">XXI Coneisc<b class="caret"></b></a>
+                                        <a href="javascript:void" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-ok"></i> XXI Coneisc<b class="caret"></b></a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="<?php echo base_url() ?>web/presentacion">Prentación</a></li>
-                                            <li><a href="<?php echo base_url() ?>web/cronograma">Cronograma</a></li>
+                                            <li><a href="<?php echo base_url() ?>web/presentacion"><i class="icon-forward"></i> Presentación</a></li>
+                                            <li><a href="<?php echo base_url() ?>web/cronograma"><i class="icon-calendar"></i> Cronograma</a></li>
                                         </ul>
                                     </li>
                                     <li id="li_nosotros" class="dropdown">
-                                        <a href="javascript:void" class="dropdown-toggle" data-toggle="dropdown">Nosotros<b class="caret"></b></a>
+                                        <a href="javascript:void" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-thumbs-up"></i> Nosotros<b class="caret"></b></a>
                                         <ul class="dropdown-menu">
-                                            <li><a href="<?php echo base_url() ?>web/mision_vision">Misión y Visión</a></li>
-                                            <li><a href="<?php echo base_url() ?>web/comision_organizadora">Comisión Organizadora</a></li>
+                                            <li><a href="<?php echo base_url() ?>web/mision_vision"><i class="icon-globe"></i> Misión y Visión</a></li>
+                                            <li><a href="<?php echo base_url() ?>web/comision_organizadora"><i class="icon-user"></i> Comisión Organizadora</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">Papers</a></li>
-                                    <li><a href="#">Eventos</a></li>
-                                    <li id="li_inscripcion"><a href="<?php echo base_url() ?>inscripcion">Inscripción</a></li>
-                                    <li><a href="#">Costos de Vida</a></li>
-                                    <li><a href="#">Galería</a></li>
-                                    <li><a href="#">Contáctenos</a></li>
+                                    <li id="li_papers"><a href="<?php echo base_url() ?>web/papers"><i class="icon-briefcase"></i> Papers</a></li>
+                                    <li><a href="#"><i class="icon-tasks"></i> Eventos</a></li>
+                                    <li id="li_inscripcion"><a href="<?php echo base_url() ?>inscripcion"><i class="icon-pencil"></i> Inscripción</a></li>
+                                    <li id="li_costos"><a href="<?php echo base_url() ?>web/costos_vida"><i class="icon-shopping-cart"></i> Costos de Vida</a></li>
+                                    <li><a href="#"><i class="icon-picture"></i> Galería</a></li>
+                                    <li id="li_contacto"><a href="<?php echo base_url() ?>web/contactenos"><i class="icon-envelope"></i> Contáctenos</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -99,9 +98,9 @@
         </div>
         <?php  include_once $contenido; ?>
 
-            <div class="modal-footer">
+            <footer>
                 <h4>XXI CONEISC TARAPOTO 2013</h4>
-            </div>
+            </footer>
         </div>
 
         <?php 
