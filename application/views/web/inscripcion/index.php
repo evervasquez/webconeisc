@@ -52,7 +52,7 @@
                 <h3>Costos</h3>
                 <div style="text-align:center">
                     <div class="image_wrapper">
-                        <img src="<?php echo base_url() ?>assets/img/costo inscripcion.png" alt="Costo de Inscripcion" />
+                        <img src="<?php echo base_url() ?>assets/img/costo inscripcion.png" class="img-polaroid" alt="Costo de Inscripcion" />
                     </div>
                 </div>
             </div>
