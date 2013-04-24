@@ -255,7 +255,7 @@ a:focus {
   border: 1px solid rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
      -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .img-circle {
@@ -733,10 +733,6 @@ a.text-success:focus {
   text-align: center;
 }
 
-.text-justify {
-    text-align: justify;
-}
-
 h1,
 h2,
 h3,
@@ -810,12 +806,8 @@ h4 small {
 
 .page-header {
   padding-bottom: 9px;
-  margin: 20px 0;
+  margin: 20px 0 30px;
   border-bottom: 1px solid #ccc;
-}
-.page {
-  padding-bottom: 9px;
-  margin: 20px 0;
 }
 
 ul,
@@ -3373,21 +3365,6 @@ input[type="button"].btn-block {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
 }
-.primary {
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #0044cc;
-  *background-color: #003bb3;
-  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
-  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
-  background-image: -o-linear-gradient(top, #0088cc, #0044cc);
-  background-image: linear-gradient(to bottom, #0088cc, #0044cc);
-  background-repeat: repeat-x;
-  border-color: #0044cc #0044cc #002a80;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
-}
 
 .btn-primary:hover,
 .btn-primary:focus,
@@ -5274,9 +5251,8 @@ input[type="submit"].btn.btn-mini {
 .modal-footer {
   padding: 14px 15px 15px;
   margin-bottom: 0;
-  text-align: center;
-  color: #fff;
-/*  background-color: #f5f5f5;
+  text-align: right;
+  background-color: #f5f5f5;
   border-top: 1px solid #ddd;
   -webkit-border-radius: 0 0 6px 6px;
      -moz-border-radius: 0 0 6px 6px;
@@ -5284,7 +5260,7 @@ input[type="submit"].btn.btn-mini {
   *zoom: 1;
   -webkit-box-shadow: inset 0 1px 0 #ffffff;
      -moz-box-shadow: inset 0 1px 0 #ffffff;
-          box-shadow: inset 0 1px 0 #ffffff;*/
+          box-shadow: inset 0 1px 0 #ffffff;
 }
 
 .modal-footer:before,

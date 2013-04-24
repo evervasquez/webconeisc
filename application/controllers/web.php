@@ -48,6 +48,34 @@ class web extends Main_Controller {
         );
         $this->load->view('index', $data);
     }
+    
+    public function papers() {
+        $data = array(
+            'contenido' => 'web/papers.php',
+            'active' => 'li_papers'
+        );
+        $this->load->view('index', $data);
+    }
+    
+    public function contactenos() {
+        $data = array(
+            'contenido' => 'web/contacto.php',
+            'active' => 'li_contacto'
+        );
+        $this->load->view('index', $data);
+    }
+    
+    public function contacto(){
+        $this->load->view('web/contact.php');
+    }
+
+    public function costos_vida() {
+        $data = array(
+            'contenido' => 'web/costos.php',
+            'active' => 'li_costos'
+        );
+        $this->load->view('index', $data);
+    }
 
 }
 

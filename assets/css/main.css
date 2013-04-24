@@ -1,14 +1,179 @@
 /* 
     Document   : main
-    Created on : 22/04/2013, 03:03:59 PM
-    Author     : ever
-    Description:
-        Purpose of the stylesheet follows.
 */
 
-root { 
-    display: block;
+.imgsocial{
+    padding: 3px;
 }
+.page-header {
+    margin: 20px 0;
+}
+footer{
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+}
+.navbar-inner{
+    padding: 0px 30px;
+}
+.img-polaroid{
+     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+     -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+     -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+     -o-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+     -ms-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+.page {
+    padding-bottom: 9px;
+    margin: 20px 0;
+}
+.text-justify {
+    text-align: justify;
+}
+.primary {
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #0044cc;
+  background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
+  background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
+  background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+  background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+}
+.nvinner{
+    padding: 0px;
+}
+.co_bg{
+  color: #333;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  background-color: #f5f5f5;
+  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+}
+#crs{
+    width: 88%;
+    margin: 0 auto;
+}
+.carousel .container {
+    position: relative;
+    z-index: 9;
+}
+.carousel .item {
+    height: 365px;
+}
+.carousel .img {
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 365px;
+}
+.cont_crs{
+    display: block;
+    background: #fff;
+    width: 100%;
+    height: 365px;
+}
+.carousel .imgslider {
+    width: 350px;
+    height: 300px;
+}
+.page_slide{
+    padding: 25px;
+}
+
+@media (max-width: 979px) {
+    #_ds_50154212, #map_coneisc {
+        height: 400px;
+    }
+    .navbar-inner{
+        padding: 0px 20px;
+    }
+    .img_fanbox{
+        width: 30px;
+        padding-left: 10px;
+    }
+    #facebook_box{
+        top: 250px;
+    }
+    #twitter_box{
+        top: 130px;
+    }
+    .div_fanbox{
+        height: 114px;
+        border-radius: 0px;
+    }
+    div.likeboxwrap {
+        height: 116px;
+    }
+    #contact{
+        margin-top: -40px;
+    }
+    .cont_crs{
+        height: 200px;
+    }
+    .carousel .item {
+        height: 250px;
+    }
+    .carousel .img {
+        height: 250px;
+    }
+    .cont_crs{
+        height: 250px;
+    }
+    .carousel .imgslider {
+        margin-top: 15px;
+        width: 250px;
+        height: 200px;
+    }
+    .page_slide{
+        padding:  5px 10px;
+    }
+}
+
+@media (max-width: 767px) {
+    .carousel .item {
+        height: 180px;
+    }
+    .carousel .img {
+        height: 180px;
+    }
+    .cont_crs{
+        height: 180px;
+    }
+    .carousel .imgslider {
+        margin-top: -10px;
+        width: 180px;
+        height: 120px;
+    }
+    .page_slide{
+        padding-left: 10px;
+    }
+    .pslide{
+        display: none;
+    }
+    .cont_slide{
+        margin-top: -180px;
+        padding-left: 220px;
+    }
+    .cont_slide h2{
+        font-size: 16px;
+    }
+    .cont_slide .btn{
+        font-size: 14px;
+        padding: 4px 12px;
+    }
+}
+
 #registration #social-login-forms {
   list-style: none;
   margin: 0;
