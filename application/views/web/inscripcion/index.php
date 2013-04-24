@@ -1,66 +1,73 @@
-<div class="container">
-    <div class="row">
-        <h2>Inscripción</h2>
-        <div class="span7">
-            <h3>Costos</h3>
-            <div style="text-align:center">
-                <div class="image_wrapper">
-                    <img src="<?php echo base_url()?>assets/img/costo inscripcion.png" alt="Costo de Inscripcion" />
-                </div>
-            </div>
-        </div>
-        <div class="span5">
-            <h3>Inscríbase...</h3>
-                <select name="busqueda" id="busqueda">
-                    <option value="">:: Seleccione ::</option>
-                    <option value="1">Email</option>
-                    <option value="2">DNI</option>
-                </select>
-                <label>
-                    <input type="text" id="parametro" name="parametro"/>
-                </label>
-                <input type="button" value="Buscar" class="btn" id="buscarInscrito"/>
-            <div id="msg"></div>
-        </div>
-    </div>
-
-    <script type="text/javascript">
-        $(document).ready(function(){
-            alert('');
-            $("#menu_inscripcion").addClass('active');
-            $("select").val(0);
+<script type="text/javascript">
+    !function ($) {
+        $(function(){
             $("input:text").val('');
-            $("#busqueda").change(function(){
-                $("#parametro").val('');
-                if($(this).val()==1){
-                    $("#parametro").email().attr('maxlength','45').focus();
-                }
-                if($(this).val()==2){
-                    $("#parametro").solonumeros().attr('maxlength','8').focus();
-                }
-            });
-
             $("#buscarInscrito").click(function(){
                 var bval = true;
-                bval = bval && $( "#busqueda" ).combo();
-                bval = bval && $( "#parametro" ).required();
+//                var filter = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
+                bval = bval && $( "#email" ).email();
+//                if(filter.test($("#email").val())){
+//                    $("#email").removeClass('error').addClass('success');
+//                    bval = true;
+//                }else{
+//                    $("#email").parents('div[class*=control-group]').removeClass('success').addClass('error');
+//                    bval = false;
+//                }
                 if(bval){
                     $.ajax({
                         type:"POST",
-                        url:'inscripcion/buscar.php',
+                        url:'<?php echo base_url();?>inscripcion/validaInscrito',
                         data:{
-                            busqueda:$("#busqueda").val(),
-                            parametro:$("#parametro").val()
+                            email:$("#email").val()
                         },
                         beforeSend:function(){
-                            $("#msg").html('Buscando...');
+                            $("#msg").html('<img src="<?php echo base_url()?>assets/img/load.gif"/>');
                         },
                         success:function(response){
-                            $("#msg").html(response);
+                            if(response=='nuevo'){
+                                $("#form").submit();
+                            }else{
+                                $("#msg").html(response);
+                            }
                         }
                     });
                 }
             });
+            
+            $("#email").keypress(function(e){
+                var tecla = (document.all) ? e.keyCode : e.which; 
+                if(tecla==13){
+                    e.preventDefault();
+                    $("#buscarInscrito").trigger('click');
+                }
+            });
         });
-    </script>
+    }(window.jQuery)
+</script>
+<div class="container">
+    <div class="navbar-inner">
+        <div class="row-fluid">
+            <h2>Inscripción</h2>
+            <div class="span8">
+                <h3>Costos</h3>
+                <div style="text-align:center">
+                    <div class="image_wrapper">
+                        <img src="<?php echo base_url() ?>assets/img/costo inscripcion.png" alt="Costo de Inscripcion" />
+                    </div>
+                </div>
+            </div>
+            <div class="span3">
+                <h3>Consulte o Inscríbase</h3>
+                <p>Ingrese su email:</p>
+                <form action="<?php echo base_url()?>inscripcion/nuevo" method="post" id="form">
+                    <div class="control-group">
+                        <input type="text" id="email" name="email" placeholder="email"/>
+                    </div>
+                    <input type="button" value="Enviar" class="btn btn-primary" id="buscarInscrito"/>
+                </form>
+                <div id="msg"></div>
+            </div>
+        </div>
+        <br/>
+    </div>
 </div>
