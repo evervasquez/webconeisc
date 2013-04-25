@@ -185,7 +185,7 @@
                                         </form>
                                     </li>
                                     <li>
-                                        <form class="connect-button" name="login" method="POST" action="<?php echo base_url() ?>social/twitter">
+                                        <form class="connect-button" name="login" method="POST" action="<?php echo base_url() ?>tweet_test/auth">
                                             <input type="hidden" name="next" value="/account/dispatch/">
                                             <button type="submit" class="aui-button aui-style twitter-button">
                                                 Twitter
