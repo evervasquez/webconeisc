@@ -14,8 +14,8 @@
 | path to your installation.
 |
 */
-$config['base_url']	= '/webconeisc/';
-//$config['base_url']	= 'http://'.$_SERVER['SERVER_NAME'];
+//$config['base_url']	= '/webconeisc/';
+$config['base_url']	= 'http://'.$_SERVER['SERVER_NAME'];
 /*
 |--------------------------------------------------------------------------
 | Content Delivery Network URL
@@ -240,7 +240,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'la mia';
 
 /*
 |--------------------------------------------------------------------------

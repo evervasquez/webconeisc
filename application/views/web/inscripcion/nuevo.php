@@ -27,7 +27,7 @@
                                 <div class="control-group">
                                     <label for="nombres" class="control-label" >Nombres:</label>
                                     <div class="controls">
-                                        <input type="text" id="nombres" name="nombres" class="span11" maxlength="45" <?php if (isset($nombres)) {?> value="<?php echo $nombres ?>" <?php } ?> style="text-transform: uppercase"/>
+                                        <input type="text" id="nombres" name="nombres" class="span11" maxlength="45" <?php if (isset($nombres)) {?> class="border-green" value="<?php echo $nombres ?>" <?php } ?> style="text-transform: uppercase"/>
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -185,7 +185,7 @@
                                         </form>
                                     </li>
                                     <li>
-                                        <form class="connect-button" name="login" method="POST" action="<?php echo base_url() ?>social/twitter">
+                                        <form class="connect-button" name="login" method="POST" action="<?php echo base_url() ?>tweet_test/auth">
                                             <input type="hidden" name="next" value="/account/dispatch/">
                                             <button type="submit" class="aui-button aui-style twitter-button">
                                                 Twitter
