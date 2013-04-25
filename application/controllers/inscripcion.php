@@ -44,7 +44,7 @@ class inscripcion extends Main_Controller {
         if(isset($_POST['email'])){
             $this->load->model('departamento_model');
             $departamentos = $this->departamento_model->getDepartamentos();
-            $combo = "<select name='iddepartamento' id='iddepartamento' class='span11'>";
+            $combo = "<select name='iddepartamento' id='iddepartamento' class='input-xlarge'>";
             $combo .= "<option value=''> - - Seleccione - -</option>";
             foreach ($departamentos->result_array() as $row) {
                 $combo.="<option value='{$row['iddepartamento']}'>{$row['descripcion']}</option>";

@@ -17,7 +17,7 @@
                                 <div class="control-group">
                                     <label for="idtipo_inscripcion" class="control-label">Tipo de Participante:</label>
                                     <div class="controls">
-                                        <select name="idtipo_inscripcion" id="idtipo_inscripcion" class="span11">
+                                        <select name="idtipo_inscripcion" id="idtipo_inscripcion" class="input-xlarge">
                                             <option value=""> - - Seleccione - -</option>
                                             <option value="1">ESTUDIANTE</option>
                                             <option value="2">PROFESIONAL</option>
@@ -33,33 +33,33 @@
                                 <div class="control-group">
                                     <label for="apellidos" class="control-label">Apellidos:</label>
                                     <div class="controls">
-                                        <input type="text" id="apellidos" name="apellidos" class="span11" maxlength="80" <?php if (isset($apellidos)) {?> class="border-green" value="<?php echo $apellidos ?>" <?php } ?> style="text-transform: uppercase"/>
+                                        <input type="text" id="apellidos" name="apellidos" class="input-xlarge" maxlength="80" <?php if (isset($apellidos)) {?> class="border-green" value="<?php echo $apellidos ?>" <?php } ?> style="text-transform: uppercase"/>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label for="email" class="control-label">E-mail:</label>
                                     <div class="controls">
-                                        <input type="text" id="email" name="email" class="span11" value="<?php echo $email?>" maxlength="45" style="font-size: 20px;font-weight: bold"/>
+                                        <input type="text" id="email" name="email" class="input-xlarge" value="<?php echo $email?>" maxlength="45" style="font-size: 20px;font-weight: bold"/>
                                         <div id="loadEmail" style="max-width: 285px;min-height: 20px; margin: 0;"></div>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label for="confirma_email" class="control-label">Confirma E-mail:</label>
                                     <div class="controls">
-                                        <input type="text" id="confirma_email" class="span11" maxlength="45" style="font-size: 20px;font-weight: bold"/>
+                                        <input type="text" id="confirma_email" class="input-xlarge" maxlength="45" style="font-size: 20px;font-weight: bold"/>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label for="dni" class="control-label">DNI:</label>
                                     <div class="controls">
-                                        <input type="text" id="dni" name="dni" class="span11" maxlength="8"/>
+                                        <input type="text" id="dni" name="dni" class="input-xlarge" maxlength="8"/>
                                         <div id="loadDni" style="max-width:285px;min-height: 20px; margin: 0;"></div>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label for="telefono" class="control-label">Telefono/Cel:</label>
                                     <div class="controls">
-                                        <input type="text" id="telefono" name="telefono" class="span11" maxlength="15"/>
+                                        <input type="text" id="telefono" name="telefono" class="input-xlarge" maxlength="15"/>
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -101,7 +101,7 @@
                                 <div id="id_idinstitucion_group" class="control-group">
                                     <label for="idinstitucion" class="control-label">Universidad:</label>
                                     <div class="controls">
-                                        <select name="idinstitucion" id="idinstitucion" class="span11">
+                                        <select name="idinstitucion" id="idinstitucion" class="input-xlarge">
                                             <option value=""> - - Seleccione - -</option>
                                         </select>
                                         <img src="<?php echo base_url() ?>assets/img/load.gif" id="loadInstitucion"/>
@@ -110,7 +110,7 @@
                                 <div id="id_institucion_group" class="control-group">
                                     <label for="institucion" class="control-label">Especifique Institución:</label>
                                     <div class="controls">
-                                        <input type="text" id="institucion" name="institucion" class="span11"/>
+                                        <input type="text" id="institucion" name="institucion" class="input-xlarge"/>
                                     </div>
                                 </div>
                             </fieldset>
@@ -119,7 +119,7 @@
                                 <div class="control-group">
                                     <label for="tipo_pago" class="control-label">Modalidad de Pago:</label>
                                     <div class="controls">
-                                        <select name="tipo_pago" id="tipo_pago" class="span11">
+                                        <select name="tipo_pago" id="tipo_pago" class="input-xlarge">
                                             <option value=""> - - Seleccione - -</option>
                                             <option value="1">VENTANILLA</option>
                                             <option value="2">CAJERO AUTOMATICO</option>
@@ -130,19 +130,19 @@
                                 <div class="control-group">
                                     <label for="fecha_deposito" class="control-label">Fecha de Pago:</label>
                                     <div class="controls">
-                                        <input type="text" id="fecha_deposito" name="fecha_deposito" class="span11" readonly="readonly" style="cursor: pointer"/>
+                                        <input type="text" id="fecha_deposito" name="fecha_deposito" class="input-xlarge" readonly="readonly" style="cursor: pointer"/>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label for="nro_operacion" class="control-label">N° Transacción:</label>
                                     <div class="controls">
-                                        <input type="text" id="nro_operacion" name="nro_operacion" class="span11"/>
+                                        <input type="text" id="nro_operacion" name="nro_operacion" class="input-xlarge"/>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label for="monto" class="control-label">Monto:</label>
                                     <div class="controls">
-                                        <select name="monto" id="monto" class="span11">
+                                        <select name="monto" id="monto" class="input-xlarge">
                                             <option value=""> - - Seleccione - -</option>
                                             <option value="95">S/. 95.00</option>
                                             <option value="100">S/. 100.00</option>

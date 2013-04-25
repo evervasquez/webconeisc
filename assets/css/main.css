@@ -12,6 +12,9 @@
 .page-header {
     margin: 20px 0;
 }
+#form legend{
+  margin-bottom: 0px;
+}
 footer{
     color: #fff;
     text-align: center;
