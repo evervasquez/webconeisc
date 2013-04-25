@@ -27,20 +27,20 @@
                                 <div class="control-group">
                                     <label for="nombres" class="control-label" >Nombres:</label>
                                     <div class="controls">
-                                        <input type="text" id="nombres" name="nombres" class="input-xlarge" maxlength="45" <?php if (isset($nombres)) {?> class="border-green" value="<?php echo $nombres ?>" <?php } ?> style="text-transform: uppercase"/>
+                                        <input type="text" id="nombres" name="nombres" maxlength="45" class="input-xlarge" <?php if (isset($nombres)) {?> value="<?php echo $nombres;?>" <?php } ?> style="text-transform: uppercase"/>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label for="apellidos" class="control-label">Apellidos:</label>
                                     <div class="controls">
-                                        <input type="text" id="apellidos" name="apellidos" class="input-xlarge" maxlength="80" <?php if (isset($apellidos)) {?> class="border-green" value="<?php echo $apellidos ?>" <?php } ?> style="text-transform: uppercase"/>
+                                        <input type="text" id="apellidos" name="apellidos" class="input-xlarge" maxlength="80" <?php if (isset($apellidos)) {?> value="<?php echo $apellidos ?>" <?php } ?> style="text-transform: uppercase"/>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label for="email" class="control-label">E-mail:</label>
                                     <div class="controls">
                                         <input type="text" id="email" name="email" class="input-xlarge" value="<?php echo $email?>" maxlength="45" style="font-size: 20px;font-weight: bold"/>
-                                        <div id="loadEmail" style="max-width: 285px;min-height: 20px; margin: 0;"></div>
+                                        <div id="loadEmail" style="max-width: 230px;min-height: 20px; margin: 0;"></div>
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -53,7 +53,7 @@
                                     <label for="dni" class="control-label">DNI:</label>
                                     <div class="controls">
                                         <input type="text" id="dni" name="dni" class="input-xlarge" maxlength="8"/>
-                                        <div id="loadDni" style="max-width:285px;min-height: 20px; margin: 0;"></div>
+                                        <div id="loadDni" style="max-width:230px;min-height: 20px; margin: 0;"></div>
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -179,7 +179,7 @@
                                         </form>
                                     </li>
                                     <li>
-                                        <form class="connect-button" name="login" method="POST" action="<?php echo base_url() ?>tweet_test/auth">
+                                        <form class="connect-button" name="login" method="POST" action="<?php echo base_url() ?>social/twitter">
                                             <input type="hidden" name="next" value="/account/dispatch/">
                                             <button type="submit" class="aui-button aui-style twitter-button">
                                                 Twitter
@@ -189,7 +189,10 @@
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                       <?php if (isset($imagen)){ ?>
+                        <div style="width: 200px;height: 200px;margin: 0 auto" class="img-polaroid"><?php echo $imagen ?></div>
+                        <?php } ?>
+                   </div>
                     <div class="span1"></div>
                 </section>
             </div>

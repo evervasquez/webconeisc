@@ -5,10 +5,15 @@
 .imgsocial{
     padding: 3px;
 }
-.border-green{
-    border-color: green;
-    border-width: 2px;
-}
+/*.control-group select.input-xlarge{
+    width: 285px;
+}*/
+/*#loadInstitucion{
+    display: inline-block;
+    float: right;
+    margin-top: -30px;
+    padding-right: 40px;
+}*/
 .page-header {
     margin: 20px 0;
 }

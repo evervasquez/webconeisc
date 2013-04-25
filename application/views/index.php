@@ -101,7 +101,7 @@
         <?php  include_once $contenido; ?>
 
             <footer>
-                <h4>XXI CONEISC TARAPOTO 2013</h4>
+                <h4>Universidad Nacional de  San Martin - Tarapoto - Perú<br/>Facultad de Ingeniería de Sistemas e Informática</h4>
             </footer>
         </div>
 

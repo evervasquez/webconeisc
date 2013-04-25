@@ -26,7 +26,14 @@
                 $("#loadDni").html('Ingrese 8 digitos de su dni').removeClass('alert alert-success').addClass('alert alert-error').show();
             }
         });
-    
+        
+        if($('#nombres').val() != ''){
+            $("#nombres").parents('div[class*=control-group]').addClass('success');
+        }
+        if($('#apellidos').val() != ''){
+            $("#apellidos").parents('div[class*=control-group]').addClass('success');
+        }
+        
         $("#email").blur(function(){
             $.ajax({
                 type:"POST",
