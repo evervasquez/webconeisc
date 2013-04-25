@@ -27,7 +27,7 @@
                                 <div class="control-group">
                                     <label for="nombres" class="control-label" >Nombres:</label>
                                     <div class="controls">
-                                        <input type="text" id="nombres" name="nombres" class="span11" maxlength="45" <?php if (isset($nombres)) {?> class="border-green" value="<?php echo $nombres ?>" <?php } ?> style="text-transform: uppercase"/>
+                                        <input type="text" id="nombres" name="nombres" class="input-xlarge" maxlength="45" <?php if (isset($nombres)) {?> class="border-green" value="<?php echo $nombres ?>" <?php } ?> style="text-transform: uppercase"/>
                                     </div>
                                 </div>
                                 <div class="control-group">
