@@ -9,9 +9,9 @@
             </header>
             <div class="row-fluid">
                 <section class="form-container">
-                    <div class="span1"></div>
-                    <div class="span6">
-                        <form id="form" method="post" data-method="standard"  class="form-horizontal" action="<?php echo base_url() ?>inscripcion/guardar">
+                    <div class="span7">
+                        <form id="form" method="post" data-method="standard"  class="form-horizontal well" action="<?php echo base_url() ?>inscripcion/guardar">
+                            <div id="form-inscripcion">
                             <fieldset>
                                 <legend>Datos personales</legend>
                                 <div class="control-group">
@@ -161,21 +161,15 @@
                             </div>
                             <input id="id_token" type="hidden" class=" " value="2815c719c46e47c66" name="token" />
                             <input type="hidden" name="plan" value="5_users">
+                        </div>
                         </form>
-                    </div>
-                    <div class="span4">
+                    </div> 
+                    <div class="span1"></div>
+                   <div class="span3">
                         <div class="sidebar">
                             <div class="social-box">
                                 <h4>Puede registrarse también con:</h4>
                                 <ul id="social-login-forms">
-                                    <li>
-                                        <form class="connect-button" name="login" method="POST" action="/social/google/redirect/">
-                                            <input type="hidden" name="next" value="/account/dispatch/">
-                                            <button type="submit" class="aui-button aui-style google-button">
-                                                Google
-                                            </button>
-                                        </form>
-                                    </li>
                                     <li>
                                         <form class="connect-button" name="login" method="POST" action="<?php echo base_url() ?>social/facebook">
                                             <input type="hidden" name="next" value="/account/dispatch/">
@@ -189,15 +183,6 @@
                                             <input type="hidden" name="next" value="/account/dispatch/">
                                             <button type="submit" class="aui-button aui-style twitter-button">
                                                 Twitter
-                                            </button>
-                                        </form>
-                                    </li>
-                                    <li>
-                                        <form class="connect-button" name="login" method="POST" action="/social/github/redirect/">
-
-                                            <input type="hidden" name="next" value="/account/dispatch/">
-                                            <button type="submit" class="aui-button aui-style github-button">
-                                                GitHub
                                             </button>
                                         </form>
                                     </li>

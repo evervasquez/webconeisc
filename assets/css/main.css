@@ -15,6 +15,15 @@
 #form legend{
   margin-bottom: 0px;
 }
+.form-horizontal .control-label{
+    text-align: left;
+}
+#form-inscripcion{
+    margin-left: 40px;
+}
+.form-container{
+    margin-left: 40px;
+}
 footer{
     color: #fff;
     text-align: center;
@@ -97,10 +106,23 @@ footer{
 .page_slide{
     padding: 25px;
 }
-
+@media (max-width: 1024px) {
+    #form-inscripcion{
+        margin-left: 0px;
+    }
+    .form-container{
+        margin-left: 0px;
+    }
+}
 @media (max-width: 979px) {
     #_ds_50154212, #map_coneisc {
         height: 400px;
+    }
+    #form-inscripcion{
+        margin-left: 0px;
+    }
+    .form-container{
+        margin-left: 0px;
     }
     .navbar-inner{
         padding: 0px 20px;
@@ -150,6 +172,12 @@ footer{
 @media (max-width: 767px) {
     .carousel .item {
         height: 180px;
+    }
+    #form-inscripcion{
+        margin-left: 0px;
+    }
+    .form-container{
+        margin-left: 0px;
     }
     .carousel .img {
         height: 180px;
