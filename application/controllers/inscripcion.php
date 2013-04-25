@@ -103,43 +103,49 @@ class inscripcion extends Main_Controller {
     
     public function guardar(){
         if(isset($_POST)){
-            $inscripcion = $this->inscripcion_model->insertInscripcion($_POST);
-            if($inscripcion->num_rows()>0){
-                foreach ($inscripcion->result_array() as $f) {
-                    //Obtenemos los datos
-                    $idmd5=$f['idmd5'];
-                    $email=$f['email'];
-                    $usuario=$f['nombres'].' '.$f['apellidos'];
-                    $cuerpo = "<p>El usuario «{$usuario}» del CONEISC (probablemente tú mismo)<br/>
-                                    ha registrado esta dirección e-mail como suya.<br/><br/>
+            $resultado = $this->inscripcion_model->insertInscripcion($_POST);
+//            print_r($resultado);exit;
+            if($resultado['estado']==1){
+                $inscripcion = $resultado['data'];
+                if($inscripcion->num_rows()>0){
+                    foreach ($inscripcion->result_array() as $f) {
+                        //Obtenemos los datos
+                        $idmd5=$f['idmd5'];
+                        $email=$f['email'];
+                        $usuario=$f['nombres'].' '.$f['apellidos'];
+                        $cuerpo = "<p>El usuario «{$usuario}» del CONEISC (probablemente tú mismo)<br/>
+                                        ha registrado esta dirección e-mail como suya.<br/><br/>
 
-                                    Para confirmar que esta dirección e-mail está realmente<br/>
-                                    asociada a esa cuenta y activar el envío de e-mails<br/>
-                                    desde CONEISC.PE, sigue este enlace:<br/><br/>
+                                        Para confirmar que esta dirección e-mail está realmente<br/>
+                                        asociada a esa cuenta y activar el envío de e-mails<br/>
+                                        desde CONEISC.PE, sigue este enlace:<br/><br/>
 
-                                    <a href='http://{$_SERVER['HTTP_HOST']}/inscripcion/confirmarEmail/$idmd5' target='_blank'>http://{$_SERVER['HTTP_HOST']}/inscripcion/confirmarEmail/$idmd5</a>  <br/><br/>
+                                        <a href='http://{$_SERVER['HTTP_HOST']}/inscripcion/confirmarEmail/$idmd5' target='_blank'>http://{$_SERVER['HTTP_HOST']}/inscripcion/confirmarEmail/$idmd5</a>  <br/><br/>
 
-                                    Si la cuenta no es tuya, *no* sigas el enlace.
+                                        Si la cuenta no es tuya, *no* sigas el enlace.
 
-                                </p>";
-                    //Cargamos la librería
-                    $this->load->library('email');
-                    //Configuramos 
-                    $config['useragent'] = 'CONEISC';
-                    $config['mailtype'] = 'html';
-                    $this->email->initialize($config);
-                    //llenamos datos
-                    $this->email->from('WWW.CONEISC.PE', 'CONEISC');
-                    $this->email->to($email);
-                    $this->email->subject('Confirmación de la dirección de e-mail registrada en Coneisc.pe');
-                    $this->email->message($cuerpo);
-                    if($this->email->send()){
-                        $this->mensaje("Usted fue registrado con éxito en el CONEISC. Por favor revise su correo eléctronico para continuar con la inscripcion");
-                    }else{
-                        $this->email->send();
-                        $this->mensaje($this->email->print_debugger());
+                                    </p>";
+                        //Cargamos la librería
+                        $this->load->library('email');
+                        //Configuramos 
+                        $config['useragent'] = 'CONEISC';
+                        $config['mailtype'] = 'html';
+                        $this->email->initialize($config);
+                        //llenamos datos
+                        $this->email->from('WWW.CONEISC.PE', 'CONEISC');
+                        $this->email->to($email);
+                        $this->email->subject('Confirmación de la dirección de e-mail registrada en Coneisc.pe');
+                        $this->email->message($cuerpo);
+                        if($this->email->send()){
+                            $this->mensaje("Usted fue registrado con éxito en el CONEISC. Por favor revise su correo eléctronico para continuar con la inscripcion");
+                        }else{
+                            $this->email->send();
+                            $this->mensaje($this->email->print_debugger());
+                        }
                     }
                 }
+            }else{
+                $this->mensaje($resultado['msg']);
             }
         }else{
             $this->index();

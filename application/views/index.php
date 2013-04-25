@@ -15,6 +15,7 @@
         <link rel="shortcut icon" href="<?php echo base_url()?>assets/img/favicon.ico" type="image/x-icon" />
         
         <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap.css">
+        <link rel="stylesheet" href="<?php echo base_url()?>assets/css/jquery-ui.custom.css">
         <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap-responsive.css">
         <link rel="stylesheet" href="<?php echo base_url()?>assets/css/fanbox.css" type="text/css" media="screen">
         <div id='facebook_box' class="slide_likebox">

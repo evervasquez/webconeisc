@@ -13,8 +13,11 @@ class inscripcion_model extends CI_Model{
         if (isset($datos['idinstitucion'])) {$idinstitucion = $datos["idinstitucion"];} else {$idinstitucion = null;}
         if (isset($datos['institucion'])) {$institucion = $datos["institucion"];} else {$institucion = null;}
         if (isset($datos['idempleado'])) {$idempleado = $datos["idempleado"];} else {$idempleado = null;}
-        $nombres = strtoupper($datos["nombres"]);
-        $apellidos = strtoupper($datos["apellidos"]);
+        //Convertimos a mayúsculas nombres y apellidos
+        $search  = array('á', 'é', 'í', 'ó', 'ú', 'ñ');
+        $replace = array('Á', 'É', 'Í', 'Ó', 'Ú', 'Ñ');
+        $nombres = str_replace($search, $replace, strtoupper($datos["nombres"]) );
+        $apellidos = str_replace($search, $replace, strtoupper($datos["apellidos"]));
         $dni = $datos["dni"];
         $sexo = $datos["sexo"];
         $fecha_inscripcion = date('Y-m-d');
@@ -30,10 +33,64 @@ class inscripcion_model extends CI_Model{
         $telefono = $datos["telefono"];
         $email = $datos["email"];
         $estado = 0;
-        $data = $this->db->query("CALL pa_insert_inscripcion('$idtipo_inscripcion','$idinstitucion','$institucion','$idempleado', '$nombres',
-            '$apellidos','$dni','$sexo', '$fecha_inscripcion','$fecha_deposito', '$fecha_confirmacion', '$tipo_pago', '$nro_operacion', 
-            '$monto', '$telefono','$email','$estado')");
-        return $data;
+        
+        //transaccion para guardar
+        $this->db->trans_begin();
+        //ultimo ID
+        $this->db->select_max('idinscripcion');
+        $query = $this->db->get('inscripcion');
+        foreach ($query->result_array() as $value) {
+            $idMax = $value['idinscripcion']+1;
+        }
+        //idmd5
+        $idMD5 = md5(md5(md5($idMax)));
+        //validamos los datos unicos
+        $this->db->where('dni',$dni);
+        $this->db->or_where('email',$email);
+        $this->db->or_where('nro_operacion',$nro_operacion);
+        $unicos = $this->db->get('inscripcion');
+        $msg = null;
+        $error = false;
+        if($unicos->num_rows()>0){
+            $error = true;
+            $msg = 'Error de duplicidad de datos';
+        }else{
+            $this->db->insert('inscripcion', array(
+                'idinscripcion'=>$idMax,
+                'idmd5'=>$idMD5,
+                'idtipo_inscripcion'=>$idtipo_inscripcion,
+                'idinstitucion'=>$idinstitucion,
+                'institucion'=>$institucion,
+                'idempleado'=>$idempleado,
+                'nombres'=>$nombres,
+                'apellidos'=>$apellidos,
+                'dni'=>$dni,
+                'sexo'=>$sexo,
+                'fecha_inscripcion'=>$fecha_inscripcion,
+                'fecha_deposito'=>$fecha_deposito,
+                'fecha_confirmacion'=>$fecha_confirmacion,
+                'tipo_pago'=>$tipo_pago,
+                'nro_operacion'=>$nro_operacion,
+                'monto'=>$monto,
+                'telefono'=>$telefono,
+                'email'=>$email,
+                'estado'=>$estado
+            ));
+            $this->db->where('idinscripcion',$idMax);
+            $data = $this->db->get('inscripcion');
+        }
+        
+        if ($error || $this->db->trans_status() === FALSE){
+            $this->db->trans_rollback();
+            if(is_null($msg)){
+                $msg = 'Error al guardar datos';
+            }
+            $return = array ('estado'=>false,'msg'=>$msg);
+        }else{
+            $this->db->trans_commit();
+            $return = array ('estado'=>true,'data'=>$data);
+        }
+        return $return;
     }
     
     public function getInscripcion($datos, $select = false){

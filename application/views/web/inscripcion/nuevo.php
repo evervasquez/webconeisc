@@ -1,4 +1,4 @@
-
+<script type="text/javascript">var url = "<?php echo base_url() ?>"</script>
 <script src="<?php echo base_url() ?>assets/js/inscripcion/inscripcion.js" type="text/javascript"></script>
 <div class="container">
     <div class="navbar-inner">  
@@ -59,7 +59,7 @@
                                 <div class="control-group">
                                     <label for="telefono" class="control-label">Telefono/Cel:</label>
                                     <div class="controls">
-                                        <input type="text" id="telefono" name="telefono" class="span11" maxlength="15"/>
+                                        <input type="text" id="telefono" name="telefono" class="span11" maxlength="40"/>
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -104,8 +104,8 @@
                                         <select name="idinstitucion" id="idinstitucion" class="span11">
                                             <option value=""> - - Seleccione - -</option>
                                         </select>
-                                        <img src="<?php echo base_url() ?>assets/img/load.gif" id="loadInstitucion"/>
                                     </div>
+                                    <span class="controls" id="loadInstitucion"><img src="<?php echo base_url() ?>assets/img/load.gif" /></span>
                                 </div>
                                 <div id="id_institucion_group" class="control-group">
                                     <label for="institucion" class="control-label">Especifique Institución:</label>
