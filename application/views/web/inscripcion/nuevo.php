@@ -33,7 +33,7 @@
                                 <div class="control-group">
                                     <label for="apellidos" class="control-label">Apellidos:</label>
                                     <div class="controls">
-                                        <input type="text" id="apellidos" name="apellidos" class="span11" maxlength="80" <?php if (isset($apellidos)) {?> value="<?php echo $apellidos ?>" <?php } ?> style="text-transform: uppercase"/>
+                                        <input type="text" id="apellidos" name="apellidos" class="span11" maxlength="80" <?php if (isset($apellidos)) {?> class="border-green" value="<?php echo $apellidos ?>" <?php } ?> style="text-transform: uppercase"/>
                                     </div>
                                 </div>
                                 <div class="control-group">
