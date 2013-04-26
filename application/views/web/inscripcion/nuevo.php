@@ -190,7 +190,7 @@
                             </div>
                         </div>
                        <?php if (isset($imagen)){ ?>
-                        <div style="width: 200px;height: 200px;margin: 0 auto" class="img-polaroid"><?php echo $imagen ?></div>
+                        <div style="width: 180px;height: 180px;margin: 0 auto" class="img-polaroid"><?php echo $imagen ?></div>
                         <?php } ?>
                    </div>
                     <div class="span1"></div>
