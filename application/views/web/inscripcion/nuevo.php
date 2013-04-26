@@ -27,20 +27,23 @@
                                 <div class="control-group">
                                     <label for="nombres" class="control-label" >Nombres:</label>
                                     <div class="controls">
-                                        <input type="text" id="nombres" name="nombres" maxlength="45" <?php if (isset($nombres)) {?> value="<?php echo $nombres ?>" class="input-xlarge border-green" <?php } else {?> class="input-xlarge" <?php }?> style="text-transform: uppercase"/>
+
+                                        <input type="text" id="nombres" name="nombres" maxlength="45" class="input-xlarge" <?php if (isset($nombres)) {?> value="<?php echo $nombres;?>" <?php } ?> style="text-transform: uppercase"/>
+
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label for="apellidos" class="control-label">Apellidos:</label>
                                     <div class="controls">
-                                        <input type="text" id="apellidos" name="apellidos" class="input-xlarge" maxlength="80" <?php if (isset($apellidos)) {?> class="border-green" value="<?php echo $apellidos ?>" <?php } ?> style="text-transform: uppercase"/>
+
+                                        <input type="text" id="apellidos" name="apellidos" class="input-xlarge" maxlength="80" <?php if (isset($apellidos)) {?> value="<?php echo $apellidos ?>" <?php } ?> style="text-transform: uppercase"/>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label for="email" class="control-label">E-mail:</label>
                                     <div class="controls">
                                         <input type="text" id="email" name="email" class="input-xlarge" value="<?php echo $email?>" maxlength="45" style="font-size: 20px;font-weight: bold"/>
-                                        <div id="loadEmail" style="max-width: 270px;min-height: 20px; margin: 0;"></div>
+                                        <div id="loadEmail" style="max-width: 230px;min-height: 20px; margin: 0;"></div>
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -53,7 +56,7 @@
                                     <label for="dni" class="control-label">DNI:</label>
                                     <div class="controls">
                                         <input type="text" id="dni" name="dni" class="input-xlarge" maxlength="8"/>
-                                        <div id="loadDni" style="max-width:285px;min-height: 20px; margin: 0;"></div>
+                                        <div id="loadDni" style="max-width:230px;min-height: 20px; margin: 0;"></div>
                                     </div>
                                 </div>
                                 <div class="control-group">

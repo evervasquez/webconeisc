@@ -15,6 +15,7 @@
         <link rel="shortcut icon" href="<?php echo base_url()?>assets/img/favicon.ico" type="image/x-icon" />
         
         <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap.css">
+        <link rel="stylesheet" href="<?php echo base_url()?>assets/css/jquery-ui.custom.css">
         <link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap-responsive.css">
         <link rel="stylesheet" href="<?php echo base_url()?>assets/css/fanbox.css" type="text/css" media="screen">
         <div id='facebook_box' class="slide_likebox">
@@ -100,7 +101,7 @@
         <?php  include_once $contenido; ?>
 
             <footer>
-                <h4>XXI CONEISC TARAPOTO 2013</h4>
+                <h4>Universidad Nacional de  San Martin - Tarapoto - Perú<br/>Facultad de Ingeniería de Sistemas e Informática</h4>
             </footer>
         </div>
 

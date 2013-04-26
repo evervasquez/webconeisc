@@ -26,7 +26,14 @@
                 $("#loadDni").html('Ingrese 8 digitos de su dni').removeClass('alert alert-success').addClass('alert alert-error').show();
             }
         });
-    
+        
+        if($('#nombres').val() != ''){
+            $("#nombres").parents('div[class*=control-group]').addClass('success');
+        }
+        if($('#apellidos').val() != ''){
+            $("#apellidos").parents('div[class*=control-group]').addClass('success');
+        }
+        
         $("#email").blur(function(){
             $.ajax({
                 type:"POST",
@@ -35,7 +42,7 @@
                     email:$(this).val()
                 },
                 beforeSend:function(){
-                    $("#loadEmail").html('<img src="'+url+'assets/img/ajax-loader.gif"/>').show();
+                    $("#loadEmail").html('<img src="'+url+'assets/img/load.gif"/>').show();
                 },
                 success:function(response){
                     if(response=='Correcto'){
@@ -49,6 +56,9 @@
         });
         
         $("#confirma_email").keyup(function(){
+            if($("#loadEmail").css('display')=='none'){
+                $("#email").trigger('blur');
+            }
             if($("#loadEmail").html()=='Correcto'){
                 if($("#email").val()!=$("#confirma_email").val()) {
                     $("#confirma_email").parents('div[class*=control-group]').removeClass('success').addClass('error');
@@ -97,6 +107,12 @@
     
         $("#registrar").click(function(){
             var bval = true;  
+            if($("#loadDni").css('display')=='none'){
+                $("#dni").trigger('blur');
+            }
+            if($("#loadEmail").css('display')=='none'){
+                $("#email").trigger('blur');
+            }
             bval = bval && $( "#idtipo_inscripcion" ).combo();
             bval = bval && $( "#nombres" ).required();
             bval = bval && $( "#apellidos" ).required();
@@ -104,12 +120,14 @@
             if(bval && $("#loadEmail").html()=='Correcto'){
                 bval = bval && $( "#confirma_email" ).email();
             }else{
-                alert('Su email ya fue registrado');
-                $("#loadEmail").focus();
-                bval = false;
+                if(bval){
+                    $("#email").focus();
+                    bval = false;
+                }
             }
             if(bval && $( "#email" ).val()!=$( "#confirma_email" ).val()) {
                 alert('Los emails no coinciden');
+                $("#email").focus();
                 bval = false;
             }
             bval = bval && $( "#dni" ).required();
