@@ -1,6 +1,6 @@
 !function ($) {
     $(function(){
-        $("#fecha_deposito").datepicker({dateFormat: 'dd-mm-yy',changeMonth:true,changeYear:true});
+        $("#fecha_deposito").datepicker({dateFormat: 'dd-mm-yy',changeMonth:true,changeYear:true,minDate: new Date('2013','04','01'),maxDate: new Date('2013','07','12')});
         $("#id_institucion_group, #loadInstitucion, #loadDni, #loadEmail").hide();
         $("#dni").solonumeros().blur(function(){
             if($(this).val().length==8){

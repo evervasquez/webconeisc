@@ -44,7 +44,7 @@ class inscripcion extends Main_Controller {
         if(isset($_POST['email'])){
             $this->load->model('departamento_model');
             $departamentos = $this->departamento_model->getDepartamentos();
-            $combo = "<select name='iddepartamento' id='iddepartamento' class='input-xlarge'>";
+            $combo = "<select name='iddepartamento' id='iddepartamento' class='span10'>";
             $combo .= "<option value=''> - - Seleccione - -</option>";
             foreach ($departamentos->result_array() as $row) {
                 $combo.="<option value='{$row['iddepartamento']}'>{$row['descripcion']}</option>";
@@ -137,15 +137,16 @@ class inscripcion extends Main_Controller {
                         $this->email->subject('Confirmación de la dirección de e-mail registrada en Coneisc.pe');
                         $this->email->message($cuerpo);
                         if($this->email->send()){
-                            $this->mensaje("Usted fue registrado con éxito en el CONEISC. Por favor revise su correo eléctronico para continuar con la inscripcion");
+                            $this->mensaje("Registro Coneisc","Usted fue registrado con éxito en el CONEISC. Por favor revise su correo eléctronico para confirmar su email");
+                        }else if($this->email->send()){
+                            $this->mensaje("Registro Coneisc","Usted fue registrado con éxito en el CONEISC. Por favor revise su correo eléctronico para confirmar su email");
                         }else{
-                            $this->email->send();
-                            $this->mensaje($this->email->print_debugger());
+                            $this->mensaje("Error Envio de Email","Por favor comuníquese con los organizadores informando de su error.");
                         }
                     }
                 }
             }else{
-                $this->mensaje($resultado['msg']);
+                $this->mensaje("Error de Registro",$resultado['msg']);
             }
         }else{
             $this->index();
@@ -163,12 +164,12 @@ class inscripcion extends Main_Controller {
                         //Actualizamos si es el estado es 0
                         $inscripcion=$this->inscripcion_model->updateInscripcion(array('estado'=>'1'),array('idmd5'=>$id));
                         if(isset($inscripcion)){
-                            $this->mensaje("Tu dirección e-mail ha sido confirmada. Dentro de las proximas 48 horas le estaremos enviando un mensaje confirmando la inscripcion al coneisc.");
+                            $this->mensaje("Confirmar dirección e-mail","Tu dirección e-mail ha sido confirmada. Dentro de las proximas 48 horas le estaremos enviando un mensaje confirmando la inscripcion al coneisc.");
                         }else{
                             $this->index();
                         }
                     }else{
-                        $this->mensaje("Tu dirección e-mail ha sido confirmada.");
+                        $this->mensaje("Confirmar dirección e-mail","Tu dirección e-mail ha sido confirmada.");
                     }
                 }
             }else{
@@ -179,11 +180,16 @@ class inscripcion extends Main_Controller {
         }
     }
     
-    public function mensaje($mensaje=""){
-        $data['mensaje'] = $mensaje;
-        $data['active'] = 'li_inscripcion';
-        $data['contenido'] = 'web/inscripcion/mensaje.php';
-        $this->load->view('index', $data);
+    public function mensaje($titulo="", $mensaje=""){
+        if($titulo!="" && $mensaje!=""){
+            $data['titulo'] = $titulo;
+            $data['mensaje'] = $mensaje;
+            $data['active'] = 'li_inscripcion';
+            $data['contenido'] = 'web/inscripcion/mensaje.php';
+            $this->load->view('index', $data);
+        }else{
+            $this->index();
+        }
     }
     
 }
