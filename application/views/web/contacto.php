@@ -2,7 +2,7 @@
     <div class="navbar-inner">
         <div class="page-header">
             <h2>CONTÁCTENOS</h2>
-            <p class="text-justify">Si tienes alguna duda o deseas informarte más sobre el XXI CONEISC Tarapoto 2013 comuniquese con nosotros.</p>
+            <p class="text-justify">Si tienes alguna duda o deseas informarte más sobre el XXI CONEISC Tarapoto 2013 comuníquese con nosotros.</p>
         </div>
         <div class="row-fluid">
             <div class="span1"></div>

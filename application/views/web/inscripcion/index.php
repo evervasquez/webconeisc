@@ -4,15 +4,7 @@
             $("input:text").val('');
             $("#buscarInscrito").click(function(){
                 var bval = true;
-//                var filter = /[\w-\.]{3,}@([\w-]{2,}\.)*([\w-]{2,}\.)[\w-]{2,4}/;
                 bval = bval && $( "#email" ).email();
-//                if(filter.test($("#email").val())){
-//                    $("#email").removeClass('error').addClass('success');
-//                    bval = true;
-//                }else{
-//                    $("#email").parents('div[class*=control-group]').removeClass('success').addClass('error');
-//                    bval = false;
-//                }
                 if(bval){
                     $.ajax({
                         type:"POST",
@@ -21,7 +13,7 @@
                             email:$("#email").val()
                         },
                         beforeSend:function(){
-                            $("#msg").html('<img src="<?php echo base_url()?>assets/img/load.gif"/>');
+                            $("#msg").html('<img src="<?php echo base_url()?>assets/img/load.gif"/>').show();
                         },
                         success:function(response){
                             if(response=='nuevo'){
@@ -65,7 +57,7 @@
                     </div>
                     <input type="button" value="Enviar" class="btn btn-primary" id="buscarInscrito"/>
                 </form>
-                <div id="msg"></div>
+                <div id="msg" class="alert alert-info" style="display: none"></div>
             </div>
         </div>
         <br/>
