@@ -1,5 +1,6 @@
 !function ($) {
     $(function(){
+        $("#iddepartamento").val(0);
         $("#fecha_deposito").datepicker({dateFormat: 'dd-mm-yy',changeMonth:true,changeYear:true,minDate: new Date('2013','04','01'),maxDate: new Date('2013','07','12')});
         $("#id_institucion_group, #loadInstitucion, #loadDni, #loadEmail").hide();
         $("#dni").solonumeros().blur(function(){

@@ -104,8 +104,8 @@
                                         <select name="idinstitucion" id="idinstitucion" class="span10">
                                             <option value=""> - - Seleccione - -</option>
                                         </select>
+                                        <span class="help-inline" id="loadInstitucion"><img src="<?php echo base_url() ?>assets/img/load.gif" /></span>
                                     </div>
-                                    <span class="controls" id="loadInstitucion"><img src="<?php echo base_url() ?>assets/img/load.gif" /></span>
                                 </div>
                                 <div id="id_institucion_group" class="control-group">
                                     <label for="institucion" class="control-label">Especifique Institución:</label>
