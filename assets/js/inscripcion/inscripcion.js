@@ -2,7 +2,7 @@
     $(function(){
         $("#iddepartamento").val(0);
         $("#fecha_deposito").datepicker({dateFormat: 'dd-mm-yy',changeMonth:true,changeYear:true,minDate: new Date('2013','04','01'),maxDate: new Date('2013','07','12')});
-        $("#id_institucion_group, #loadInstitucion, #loadDni, #loadEmail").hide();
+        $("#id_institucion_group, #loadInstitucion, #loadDni, #loadEmail, #loadNro_operacion, #imgventanilla, #imgcejero_automatico, #imgagentebbva").hide();
         $("#dni").solonumeros().blur(function(){
             if($(this).val().length==8){
                 $.ajax({
@@ -35,7 +35,7 @@
             $("#apellidos").parents('div[class*=control-group]').addClass('success');
         }
         
-        $("#email").blur(function(){
+        $("#email").attr('readonly',true).blur(function(){
             $.ajax({
                 type:"POST",
                 url:url+'inscripcion/validar',
@@ -54,6 +54,36 @@
                     $("#loadEmail").html(response).show();
                 }
             });
+        });
+        $("#email").trigger('blur');
+        $("#nro_operacion").blur(function(){
+            $.ajax({
+                type:"POST",
+                url:url+'inscripcion/validar',
+                data:{
+                    nro_operacion:$(this).val()
+                },
+                beforeSend:function(){
+                    $("#loadNro_operacion").html('<img src="'+url+'assets/img/load.gif"/>').show();
+                },
+                success:function(response){
+                    if(response=='Correcto'){
+                        $("#loadNro_operacion").removeClass('alert alert-error').addClass('alert alert-success');
+                    }else{
+                        $("#loadNro_operacion").removeClass('alert alert-success').addClass('alert alert-error');
+                    }
+                    $("#loadNro_operacion").html(response).show();
+                }
+            });
+        });
+        
+        $("#tipo_pago").change(function(){
+            switch(parseInt($(this).val())){
+                case 1: $("#imgventanilla").show();$("#imgcejero_automatico").hide();$("#imgagentebbva").hide();break;
+                case 2: $("#imgventanilla").hide();$("#imgcejero_automatico").show();$("#imgagentebbva").hide();break;
+                case 3: $("#imgventanilla").hide();$("#imgcejero_automatico").hide();$("#imgagentebbva").show();break;
+                default: $("#imgventanilla").hide();$("#imgcejero_automatico").hide();$("#imgagentebbva").hide();break;
+            }
         });
         
         $("#confirma_email").keyup(function(){
@@ -114,6 +144,9 @@
             if($("#loadEmail").css('display')=='none'){
                 $("#email").trigger('blur');
             }
+            if($("#loadNro_operacion").css('display')=='none'){
+                $("#nro_operacion").trigger('blur');
+            }
             bval = bval && $( "#idtipo_inscripcion" ).combo();
             bval = bval && $( "#nombres" ).required();
             bval = bval && $( "#apellidos" ).required();
@@ -150,11 +183,18 @@
             bval = bval && $( "#monto" ).combo();
             if(bval && $("#loadDni").html()!='Correcto'){
                 bval=false;
-                $("#dni").parents('div[class=control-group]').removeClass('success').addClass('error');
+                $("#dni").parents('div[class*=control-group]').removeClass('success').addClass('error');
+                $("#dni").focus();
             }
             if(bval && $("#loadEmail").html()!='Correcto'){
                 bval=false;
-                $("#email").parents('div[class=control-group]').removeClass('success').addClass('error');
+                $("#email").parents('div[class*=control-group]').removeClass('success').addClass('error');
+                $("#email").focus();
+            }
+            if(bval && $("#loadNro_operacion").html()!='Correcto'){
+                bval=false;
+                $("#nro_operacion").parents('div[class*=control-group]').removeClass('success').addClass('error');
+                $("#nro_operacion").focus();
             }
             if(bval) {
                 $("#form").submit();

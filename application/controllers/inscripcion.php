@@ -25,7 +25,7 @@ class inscripcion extends Main_Controller {
             if($inscripcion->num_rows()>0){
                 foreach ($inscripcion->result_array() as $row) {
                     switch ($row['estado']){
-                        case 0: echo 'Aun no confirmó su email...<a href="#">Reenviar mensaje de verificación</a>';break;
+                        case 0: echo 'Aun no confirmó su email...<a href="#" onclick="enviarEmail(\''.$email.'\')">Reenviar mensaje de verificación</a>';break;
                         case 1: echo 'Su inscripción está en proceso de verificación. Gracias!';break;
                         case 2: echo 'Usted ya forma parte del XXI Coneisc. Te esperamos!';break;
                         case 3: echo 'Su inscripción tiene un inconveniente. Se le ha enviado un correo con los detalles';break;
@@ -85,6 +85,8 @@ class inscripcion extends Main_Controller {
                 }else{
                     echo 'Correcto';
                 }
+            }else{
+                echo 'Datos numericos';
             }
         }else if(isset($_POST['email'])){
             $email = $_POST['email'];
@@ -93,6 +95,16 @@ class inscripcion extends Main_Controller {
             $inscripcion = $this->inscripcion_model->getInscripcion(array('email'=>$email));
             if($inscripcion->num_rows()>0){
                 echo 'Ya existe registrado su email';
+            }else{
+                echo 'Correcto';
+            }
+        }else if(isset($_POST['nro_operacion'])){
+            $nro_operacion = $_POST['nro_operacion'];
+            $caracteres_prohibidos = array("'","/","<",">",";",'"');    
+            $nro_operacion = str_replace($caracteres_prohibidos,"",$nro_operacion);
+            $inscripcion = $this->inscripcion_model->getInscripcion(array('nro_operacion'=>$nro_operacion));
+            if($inscripcion->num_rows()>0){
+                echo 'Ya existe registrado su N° de transaccion';
             }else{
                 echo 'Correcto';
             }
@@ -189,6 +201,54 @@ class inscripcion extends Main_Controller {
             $data['active'] = 'li_inscripcion';
             $data['contenido'] = 'web/inscripcion/mensaje.php';
             $this->load->view('index', $data);
+        }else{
+            $this->index();
+        }
+    }
+    
+    public function reenviar_email(){
+        if(isset($_POST['email'])){
+            //Obtenemos los datos
+            $email = $_POST['email'];
+            $caracteres_prohibidos = array("'","/","<",">",";",'"');    
+            $email = str_replace($caracteres_prohibidos,"",$email);
+            $inscripcion = $this->inscripcion_model->getInscripcion(array('email'=>$email));
+            $inscripcion = $inscripcion->result_array();
+            $idmd5=$inscripcion[0]['idmd5'];
+            $email=$inscripcion[0]['email'];
+            $usuario=$inscripcion[0]['nombres'].' '.$inscripcion[0]['apellidos'];
+            $cuerpo = "<p>El usuario «{$usuario}» del CONEISC (probablemente tú mismo)<br/>
+                            ha registrado esta dirección e-mail como suya.<br/><br/>
+
+                            Para confirmar su registro y que esta dirección e-mail <br/>
+                            está realmente asociada a esta cuenta, sigue el siguiente enlace:<br/><br/>
+
+                            <a href='http://{$_SERVER['HTTP_HOST']}/inscripcion/confirmarEmail/$idmd5' target='_blank'>http://{$_SERVER['HTTP_HOST']}/inscripcion/confirmarEmail/$idmd5</a>  <br/><br/>
+                            <br/>   
+                            Atentamente.
+                            <br/>
+                            XXI CONEISC
+                            <br/>
+                            Tarapoto 2013 
+                        </p>";
+            //Cargamos la librería
+            $this->load->library('email');
+            //Configuramos 
+            $config['useragent'] = 'CONEISC';
+            $config['mailtype'] = 'html';
+            $this->email->initialize($config);
+            //llenamos datos
+            $this->email->from('WWW.CONEISC.PE', 'CONEISC');
+            $this->email->to($email);
+            $this->email->subject('Confirmación de la dirección de e-mail registrada en Coneisc.pe');
+            $this->email->message($cuerpo);
+            if($this->email->send()){
+                echo "Por favor revise su correo electrónico para confirmar su registro";
+            }else if($this->email->send()){
+                echo "Por favor revise su correo electrónico para confirmar su registro";
+            }else{
+                echo 'Error al enviar mensaje...<a href="#" onclick="enviarEmail(\''.$_POST['email'].'\')">Reenviar mensaje de verificación</a>';
+            }
         }else{
             $this->index();
         }

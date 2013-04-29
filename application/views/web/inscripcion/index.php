@@ -34,7 +34,22 @@
                 }
             });
         });
-    }(window.jQuery)
+    }(window.jQuery);
+    function enviarEmail(email){
+        $.ajax({
+            type:"POST",
+            url:'<?php echo base_url();?>inscripcion/reenviar_email',
+            data:{
+                email:email
+            },
+            beforeSend:function(){
+                $("#msg").html('<img src="<?php echo base_url()?>assets/img/load.gif"/>').show();
+            },
+            success:function(response){
+                $("#msg").html(response);
+            }
+        });
+    }
 </script>
 <div class="container">
     <div class="navbar-inner">
@@ -65,7 +80,7 @@
                             <li>Al momento de depositar solicitar al cajero que registre su Nombre o DNI.</li>
                             <li>Ingrese a <a href="<?php echo base_url() ?>inscripcion/">www.coneisc.pe/inscripcion</a>.</li>
                             <li>Ingrese su correo electrónico en "Consulte o Inscribase". Si ya esta registrado se mostrará el estado de su inscripción 
-                                o de lo contrario el formulario de inscripción.</li>
+                                o de lo contrario lo llevará al formulario de inscripción.</li>
                         </ol>
                         <h4>Formulario de Inscripción</h4>
                         <ul>

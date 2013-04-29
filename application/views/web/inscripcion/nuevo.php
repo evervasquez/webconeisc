@@ -137,6 +137,7 @@
                                     <label for="nro_operacion" class="control-label">N° Transacción:</label>
                                     <div class="controls">
                                         <input type="text" id="nro_operacion" name="nro_operacion" class="span10"/>
+                                        <div id="loadNro_operacion" style="max-width:240px;min-height: 20px; margin: 0;"></div>
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -192,6 +193,11 @@
                        <?php if (isset($imagen)){ ?>
                         <div style="width: 180px;height: 180px;margin: 0 auto" class="img-polaroid"><?php echo $imagen ?></div>
                         <?php } ?>
+                        <div>
+                            <img src="<?php echo base_url()?>assets/img/vouchers/ventanilla.jpg" id="imgventanilla"/>
+                            <img src="<?php echo base_url()?>assets/img/vouchers/cejero_automatico.jpg" id="imgcejero_automatico"/>
+                            <img src="<?php echo base_url()?>assets/img/vouchers/agentebbva.jpg" id="imgagentebbva"/>
+                        </div>
                    </div>
                     <div class="span1"></div>
                 </section>
