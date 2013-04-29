@@ -90,7 +90,7 @@
                                     <li><a href="#"><i class="icon-tasks"></i> Eventos</a></li>
                                     <li id="li_inscripcion"><a href="<?php echo base_url() ?>inscripcion"><i class="icon-pencil"></i> Inscripción</a></li>
                                     <li id="li_costos"><a href="<?php echo base_url() ?>web/costos_vida"><i class="icon-shopping-cart"></i> Costos de Vida</a></li>
-                                    <li><a href="#"><i class="icon-picture"></i> Galería</a></li>
+                                    <li id="li_galeria"><a href="<?php echo base_url() ?>galeria"><i class="icon-picture"></i> Galería</a></li>
                                     <li id="li_contacto"><a href="<?php echo base_url() ?>web/contactenos"><i class="icon-envelope"></i> Contáctenos</a></li>
                                 </ul>
                             </div>
