@@ -49,7 +49,37 @@
                 </div>
             </div>
             <div class="span3">
+                <h4><a href="#myModal" role="button" data-toggle="modal">Leer Pasos de Inscripción</a></h4>
                 <h3>Consulte o Inscríbase</h3>
+                
+                <!-- Modal -->
+                <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 id="myModalLabel">Pasos para Inscribir</h3>
+                    </div>
+                    <div class="modal-body text-justify">
+                        <h4>Instrucciones para Inscripción</h4>
+                        <ol>
+                            <li>Hacer el pago respectivo según el Cronograma de Inscripción.</li>
+                            <li>Al momento de depositar solicitar al cajero que registre su Nombre o DNI.</li>
+                            <li>Ingrese a <a href="<?php echo base_url() ?>inscripcion/">www.coneisc.pe/inscripcion</a>.</li>
+                            <li>Ingrese su correo electrónico en "Consulte o Inscribase". Si ya esta registrado se mostrará el estado de su inscripción 
+                                o de lo contrario el formulario de inscripción.</li>
+                        </ol>
+                        <h4>Formulario de Inscripción</h4>
+                        <ul>
+                            <li>Realiza el Registro de sus datos personales y de operación bancaria.</li>
+                            <li>Al registrarse se le enviará un correo para confirmar su inscripción.</li>
+                            <li>Al confirmar su email su inscripción se encuentra en proceso de verificación y usted debe esperar 72 horas para recibir la confirmación de la misma.</li>
+                        </ul>
+                        <h5><label style="color:red;font-weight: bold">Nota:</label>
+                        <p>No olvide traer el voucher o una copia del mismo el día del congreso para la entega de materiales.</p></h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cerrar</button>
+                    </div>
+                </div>
                 <p>Ingrese su email:</p>
                 <form action="<?php echo base_url()?>inscripcion/nuevo" method="post" id="form">
                     <div class="control-group">

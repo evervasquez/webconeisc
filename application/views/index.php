@@ -45,6 +45,7 @@
         <link rel="stylesheet" href="<?php echo base_url()?>assets/css/main.css">
         <script src="<?php echo base_url()?>assets/js/jquery.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="<?php echo base_url() ?>assets/js/jquery.js"><\/script>')</script>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
         <script src="<?php echo base_url()?>assets/js/required.js"></script>
     </head>
@@ -89,7 +90,7 @@
                                     <li><a href="#"><i class="icon-tasks"></i> Eventos</a></li>
                                     <li id="li_inscripcion"><a href="<?php echo base_url() ?>inscripcion"><i class="icon-pencil"></i> Inscripción</a></li>
                                     <li id="li_costos"><a href="<?php echo base_url() ?>web/costos_vida"><i class="icon-shopping-cart"></i> Costos de Vida</a></li>
-                                    <li><a href="#"><i class="icon-picture"></i> Galería</a></li>
+                                    <li id="li_galeria"><a href="<?php echo base_url() ?>galeria"><i class="icon-picture"></i> Galería</a></li>
                                     <li id="li_contacto"><a href="<?php echo base_url() ?>web/contactenos"><i class="icon-envelope"></i> Contáctenos</a></li>
                                 </ul>
                             </div>
