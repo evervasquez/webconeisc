@@ -1,7 +1,8 @@
 !function ($) {
     $(function(){
         $("#iddepartamento").val(0);
-        $("#fecha_deposito").datepicker({dateFormat: 'dd-mm-yy',changeMonth:true,changeYear:true,minDate: new Date('2013','04','01'),maxDate: new Date('2013','07','12')});
+        $("#fecha_deposito").datepicker({dateFormat: 'dd-mm-yy',changeMonth:true,changeYear:true,minDate: new Date('2013','04','01'),
+            maxDate: new Date('2013','07','12'),onSelect: function(date) {$("#idtipo_inscripcion").trigger('change')}});
         $("#id_institucion_group, #loadInstitucion, #loadDni, #loadEmail, #loadNro_operacion, #imgventanilla, #imgcejero_automatico, #imgagentebbva").hide();
         $("#dni").solonumeros().blur(function(){
             if($(this).val().length==8){
@@ -135,7 +136,33 @@
                 $("#id_institucion_group").hide();
             }
         });
-    
+        
+        $("#idtipo_inscripcion").change(function(){
+            var fecha_deposito = $("#fecha_deposito").val();
+            var idtipo_inscripcion = $("#idtipo_inscripcion").val();
+            var monto = "";
+            if($.trim(fecha_deposito)!="" && idtipo_inscripcion!=""){
+                var fecha=fecha_deposito.split("-");
+                if(idtipo_inscripcion=="1"){
+                    switch (fecha[1]){
+                        case '05':monto="95.00" ;break;
+                        case '06':monto="100.00" ;break;
+                        case '07':monto="115.00" ;break;
+                        case '08':monto="125.00" ;break;
+                    }
+                }else{
+                    switch (fecha[1]){
+                        case '05':monto="100.00" ;break;
+                        case '06':monto="115.00" ;break;
+                        case '07':monto="125.00" ;break;
+                        case '08':monto="135.00" ;break;
+                    }
+                }
+            }
+            $("#monto").val(monto);
+        });
+        $("#idtipo_inscripcion").trigger('change');
+        
         $("#registrar").click(function(){
             var bval = true;  
             if($("#loadDni").css('display')=='none'){
@@ -180,7 +207,6 @@
             bval = bval && $( "#tipo_pago" ).combo();
             bval = bval && $( "#fecha_deposito" ).required();
             bval = bval && $( "#nro_operacion" ).required();
-            bval = bval && $( "#monto" ).combo();
             if(bval && $("#loadDni").html()!='Correcto'){
                 bval=false;
                 $("#dni").parents('div[class*=control-group]').removeClass('success').addClass('error');

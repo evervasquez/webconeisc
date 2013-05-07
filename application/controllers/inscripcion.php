@@ -114,50 +114,47 @@ class inscripcion extends Main_Controller {
     }
     
     public function guardar(){
-        if(isset($_POST)){
+        if(isset($_POST['email'])){
+            $idmd5 = $_POST['email'].uniqid();
+            $idmd5 = md5( md5( md5($idmd5)));
+            array_push($_POST, $idmd5);
+//            echo '<pre>';print_r($_POST);exit;
             $resultado = $this->inscripcion_model->insertInscripcion($_POST);
-//            print_r($resultado);exit;
-            if($resultado['estado']==1){
-                $inscripcion = $resultado['data'];
-                if($inscripcion->num_rows()>0){
-                    foreach ($inscripcion->result_array() as $f) {
-                        //Obtenemos los datos
-                        $idmd5=$f['idmd5'];
-                        $email=$f['email'];
-                        $usuario=$f['nombres'].' '.$f['apellidos'];
-                        $cuerpo = "<p>El usuario «{$usuario}» del CONEISC (probablemente tú mismo)<br/>
-                                        ha registrado esta dirección e-mail como suya.<br/><br/>
+            if($resultado['estado']){
+                //Obtenemos los datos
+                $email=$_POST['email'];
+                $usuario=$_POST['nombres'].' '.$_POST['apellidos'];
+                $cuerpo = "<p>El usuario «{$usuario}» del CONEISC (probablemente tú mismo)<br/>
+                                ha registrado esta dirección e-mail como suya.<br/><br/>
 
-                                        Para confirmar su registro y que esta dirección e-mail <br/>
-                                        está realmente asociada a esta cuenta, sigue el siguiente enlace:<br/><br/>
+                                Para confirmar su registro y que esta dirección e-mail <br/>
+                                está realmente asociada a esta cuenta, sigue el siguiente enlace:<br/><br/>
 
-                                        <a href='http://{$_SERVER['HTTP_HOST']}/inscripcion/confirmarEmail/$idmd5' target='_blank'>http://{$_SERVER['HTTP_HOST']}/inscripcion/confirmarEmail/$idmd5</a>  <br/><br/>
-                                        <br/>   
-                                        Atentamente.
-                                        <br/>
-                                        XXI CONEISC
-                                        <br/>
-                                        Tarapoto 2013 
-                                    </p>";
-                        //Cargamos la librería
-                        $this->load->library('email');
-                        //Configuramos 
-                        $config['useragent'] = 'CONEISC';
-                        $config['mailtype'] = 'html';
-                        $this->email->initialize($config);
-                        //llenamos datos
-                        $this->email->from('WWW.CONEISC.PE', 'CONEISC');
-                        $this->email->to($email);
-                        $this->email->subject('Confirmación de la dirección de e-mail registrada en Coneisc.pe');
-                        $this->email->message($cuerpo);
-                        if($this->email->send()){
-                            $this->mensaje("Registro Coneisc","Por favor revise su correo eléctronico para confirmar su registro");
-                        }else if($this->email->send()){
-                            $this->mensaje("Registro Coneisc","Por favor revise su correo eléctronico para confirmar su registro");
-                        }else{
-                            $this->mensaje("Error Envio de Email","Por favor comuníquese con los organizadores informando de su error.");
-                        }
-                    }
+                                <a href='http://{$_SERVER['HTTP_HOST']}/inscripcion/confirmarEmail/$idmd5' target='_blank'>http://{$_SERVER['HTTP_HOST']}/inscripcion/confirmarEmail/$idmd5</a>  <br/><br/>
+                                <br/>   
+                                Atentamente.
+                                <br/>
+                                XXI CONEISC
+                                <br/>
+                                Tarapoto 2013 
+                            </p>";
+                //Cargamos la librería
+                $this->load->library('email');
+                //Configuramos 
+                $config['useragent'] = 'CONEISC';
+                $config['mailtype'] = 'html';
+                $this->email->initialize($config);
+                //llenamos datos
+                $this->email->from('WWW.CONEISC.PE', 'CONEISC');
+                $this->email->to($email);
+                $this->email->subject('Confirmación de la dirección de e-mail registrada en Coneisc.pe');
+                $this->email->message($cuerpo);
+                if($this->email->send()){
+                    $this->mensaje("Registro Coneisc","Por favor revise su correo eléctronico para confirmar su registro");
+                }else if($this->email->send()){
+                    $this->mensaje("Registro Coneisc","Por favor revise su correo eléctronico para confirmar su registro");
+                }else{
+                    $this->mensaje("Error Envio de Email","Por favor comuníquese con los organizadores informando de su error.");
                 }
             }else{
                 $this->mensaje("Error de Registro",$resultado['msg']);

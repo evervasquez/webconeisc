@@ -136,22 +136,13 @@
                                 <div class="control-group">
                                     <label for="nro_operacion" class="control-label">N° Transacción:</label>
                                     <div class="controls">
-                                        <input type="text" id="nro_operacion" name="nro_operacion" class="span10"/>
+                                        <input type="text" id="nro_operacion" name="nro_operacion" class="span10" maxlength="10"/>
                                         <div id="loadNro_operacion" style="max-width:240px;min-height: 20px; margin: 0;"></div>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label for="monto" class="control-label">Monto:</label>
-                                    <div class="controls">
-                                        <select name="monto" id="monto" class="span10">
-                                            <option value=""> - - Seleccione - -</option>
-                                            <option value="95">S/. 95.00</option>
-                                            <option value="100">S/. 100.00</option>
-                                            <option value="115">S/. 115.00</option>
-                                            <option value="125">S/. 125.00</option>
-                                            <option value="135">S/. 135.00</option>
-                                        </select>
-                                    </div>
+                                    <div class="controls"><input type="text" id="monto" name="monto" class="span10" readonly="readonly"/></div>
                                 </div>
                             </fieldset>
                             <div class="form-actions">
@@ -160,8 +151,6 @@
                                     <a class="cancel btn" href="<?php echo base_url() ?>inscripcion">Cancelar</a>
                                 </div>
                             </div>
-                            <input id="id_token" type="hidden" class=" " value="2815c719c46e47c66" name="token" />
-                            <input type="hidden" name="plan" value="5_users">
                         </div>
                         </form>
                     </div> 
@@ -193,7 +182,7 @@
                        <?php if (isset($imagen)){ ?>
                         <div style="width: 180px;height: 180px;margin: 0 auto" class="img-polaroid"><?php echo $imagen ?></div>
                         <?php } ?>
-                        <div>
+                        <div id="imgpago">
                             <img src="<?php echo base_url()?>assets/img/vouchers/ventanilla.jpg" id="imgventanilla"/>
                             <img src="<?php echo base_url()?>assets/img/vouchers/cejero_automatico.jpg" id="imgcejero_automatico"/>
                             <img src="<?php echo base_url()?>assets/img/vouchers/agentebbva.jpg" id="imgagentebbva"/>
