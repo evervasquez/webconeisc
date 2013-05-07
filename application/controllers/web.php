@@ -7,6 +7,8 @@ class web extends Main_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->load->helper(array('url','form','recaptchalib_helper'));
+        $this->load->library('form_validation');
     }
 
     public function index() {
@@ -65,6 +67,44 @@ class web extends Main_Controller {
         $this->load->view('index', $data);
     }
     
+    function verifica_captcha() {
+            //aquí debemos la clave privada que recaptcha nos ha dado
+        $privatekey = "6LdkseASAAAAAFMNTe65nOe_3mQqociRNbSeZWnA";
+        $resp = recaptcha_check_answer ($privatekey,
+                                        $_SERVER["REMOTE_ADDR"],
+                                        $this->input->post("recaptcha_challenge_field"),
+                                        $this->input->post("recaptcha_response_field"));
+ 
+          if (!$resp->is_valid) {
+            $this->form_validation->set_message('verifica_captcha','El %s es incorrecto');
+                 return FALSE;
+          } else {
+ 
+          }
+    }
+        
+    function contactenoss() {
+        if(isset($_POST['registro']) and $_POST['registro'] == 'si')
+        {
+            $this->form_validation->set_rules('nombre', 'Nombre','required|xss_clean');
+            $this->form_validation->set_rules('email', 'Email','required|valid_email');
+            $this->form_validation->set_rules('asunto', 'Asunto','required|xss_clean');
+            $this->form_validation->set_rules('text', 'Text','required|xss_clean');
+            $this->form_validation->set_rules('recaptcha_response_field', 'codigo captcha','callback_verifica_captcha|xss_clean');
+ 
+            $this->form_validation->set_message('required', 'El %s es requerido');
+ 
+            if (!$this->form_validation->run())
+            {
+                $this->contactenos();
+            }
+            else
+            {
+                $this->contacto();
+            }
+        }
+    }
+    
     public function contacto(){
         $this->load->view('web/contact.php');
     }
@@ -79,5 +119,5 @@ class web extends Main_Controller {
 
 }
 
-/* End of file frontpage.php */
-/* Location: ./application/controllers/frontpage.php */
+/* End of file web.php */
+/* Location: ./application/controllers/web.php */
