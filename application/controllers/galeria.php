@@ -1,7 +1,6 @@
 <?php
 
-if (!defined('BASEPATH'))
-    die();
+if (!defined('BASEPATH'))die();
 
 class galeria extends Main_Controller {
 

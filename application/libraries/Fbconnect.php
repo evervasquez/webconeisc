@@ -42,18 +42,15 @@ class Fbconnect extends Facebook {
         foreach ($album['data'] as $album) {
 //            $albumes .= '<li>Álbum: ' . $album['name'] . '</li>';
 
-            $albumes .= "<div style='display:inline-block;padding:10px;width:220px;height:230px'> ";
+            $albumes .= "<div style='display:inline-block;padding:10px;width:140px;height:150px;vertical-align:top'> ";
 
             //recuperar fotos por albums
             $photo = $this->api("/{$album['id']}/photos");
-            $i = 0;
             foreach ($photo['data'] as $photo) {
-                if($i == 0){
-                    $albumes .= "<a href='". base_url() ."galeria/album/".$album['id']."'><img src='{$photo['picture']}' class='img-polaroid' style='height:200px;width:200px' /></a>";
-                    $i = 1;
-                }
+                $albumes .= "<a href='". base_url() ."galeria/album/".$album['id']."'><img src='{$photo['picture']}' class='img-polaroid' style='height:120px;width:120px' /></a>";
+                break;
             }
-            $albumes .= '<br/>Álbum: ' . $album['name'];
+            $albumes .= '<br/>' . $album['name'];
             $albumes .= '</div>';
         }
 //        $albumes .= '</ul>';
@@ -72,13 +69,15 @@ class Fbconnect extends Facebook {
                 $albumes .= '<h4>Álbum: ' . $album['name'] . '</h4><br/>';
                 //recuperar fotos por albums
                 $photo = $this->api("/{$album['id']}/photos");
-
+                
+                $albumes .= '<div  id="gallery">';
                 foreach ($photo['data'] as $photo) {
-                        $albumes .= "<div style='display:inline-block;padding:10px;width:220px;height:230px'> ";
-                        $albumes .= "<a href='". base_url() ."galeria/album/".$album['id']."'><img src='{$photo['picture']}' class='img-polaroid' style='height:200px;width:200px' /></a>";
-                        $albumes .= '</div>';
-                        
+                        $albumes .= "<div style='display:inline-block;padding:10px;width:140px;height:150px'>";
+                        $albumes .= "<a rel='sexylightbox[kmx]' href='{$photo['source']}'>";
+                        $albumes .= "<img src='{$photo['picture']}' class='img-polaroid' style='height:120px;width:120px' />";
+                        $albumes .= "</a></div>";
                 }
+                $albumes .= '</div>';
             }
         }
 //        $albumes .= '</ul>';

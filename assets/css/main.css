@@ -87,6 +87,9 @@ footer{
     width: 88%;
     margin: 0 auto;
 }
+#imgpago{
+    margin-top: 500px;
+}
 .carousel .container {
     position: relative;
     z-index: 9;
@@ -173,6 +176,9 @@ footer{
     }
     .page_slide{
         padding:  5px 10px;
+    }
+    #imgpago{
+        margin-top: 0;
     }
 }
 

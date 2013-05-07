@@ -56,7 +56,7 @@
         <div class="row-fluid">
             <h2>Inscripción</h2>
             <div class="span8">
-                <h3>Costos</h3>
+                <h3>Cronograma de Inscripcion</h3>
                 <div style="text-align:center">
                     <div class="image_wrapper">
                         <img src="<?php echo base_url() ?>assets/img/costo inscripcion.png" class="img-polaroid" alt="Costo de Inscripcion" />
@@ -64,7 +64,7 @@
                 </div>
             </div>
             <div class="span3">
-                <h4><a href="#myModal" role="button" data-toggle="modal">Leer Pasos de Inscripción</a></h4>
+                <h4><a href="#myModal" role="button" data-toggle="modal" class="btn btn-success">Leer Pasos de Inscripción</a></h4>
                 <h3>Consulte o Inscríbase</h3>
                 
                 <!-- Modal -->
@@ -76,8 +76,8 @@
                     <div class="modal-body text-justify">
                         <h4>Instrucciones para Inscripción</h4>
                         <ol>
-                            <li>Hacer el pago respectivo según el Cronograma de Inscripción.</li>
-                            <li>Al momento de depositar solicitar al cajero que registre su Nombre o DNI.</li>
+                            <li>Hacer el pago respectivo según el Cronograma de Inscripción en el banco <strong>BBVA Continental</strong> al número de cuenta: <strong>0011-0310-0100076042-09</strong> de la Fundación Para el Desarrollo de la Selva (FUDES).</li>
+                            <li>Al momento de depositar, solicitar al cajero que registre su Nombre o DNI.</li>
                             <li>Ingrese a <a href="<?php echo base_url() ?>inscripcion/">www.coneisc.pe/inscripcion</a>.</li>
                             <li>Ingrese su correo electrónico en "Consulte o Inscribase". Si ya esta registrado se mostrará el estado de su inscripción 
                                 o de lo contrario lo llevará al formulario de inscripción.</li>
