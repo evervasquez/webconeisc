@@ -61,7 +61,6 @@ footer{
   background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
   background-image: -o-linear-gradient(top, #0088cc, #0044cc);
   background-image: linear-gradient(to bottom, #0088cc, #0044cc);
-  background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
 }
 .nvinner{
@@ -153,6 +152,9 @@ footer{
     }
     div.likeboxwrap {
         height: 116px;
+    }
+    div.likeboxwrap#twitterfanbox{
+        height: 90px;
     }
     #contact{
         margin-top: -40px;
