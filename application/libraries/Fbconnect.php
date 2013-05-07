@@ -42,16 +42,16 @@ class Fbconnect extends Facebook {
         foreach ($album['data'] as $album) {
 //            $albumes .= '<li>Álbum: ' . $album['name'] . '</li>';
 
-            $albumes .= "<div style='display:inline-block;padding:10px;width:140px;height:150px;vertical-align:top'> ";
+            $albumes .= "<div style='display:inline-block;padding:10px;width:140px;max-height:180px;vertical-align:top'> ";
 
             //recuperar fotos por albums
             $photo = $this->api("/{$album['id']}/photos");
             foreach ($photo['data'] as $photo) {
-                $albumes .= "<a href='". base_url() ."galeria/album/".$album['id']."'><img src='{$photo['picture']}' class='img-polaroid' style='height:120px;width:120px' /></a>";
+                $albumes .= "<a title='" . $album['name'] . "' href='". base_url() ."galeria/album/".$album['id']."'><img src='{$photo['picture']}' class='img-polaroid' style='height:120px;width:120px' /></a>";
                 break;
             }
-            $albumes .= '<br/>' . $album['name'];
-            $albumes .= '</div>';
+            $albumes .= '<br/><div>' . $album['name'];
+            $albumes .= '</div></div>';
         }
 //        $albumes .= '</ul>';
         
