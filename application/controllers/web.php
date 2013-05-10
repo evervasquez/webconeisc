@@ -29,7 +29,15 @@ class web extends Main_Controller {
     public function cronograma() {
         $data = array(
             'contenido' => 'web/cronograma.php',
-            'active' => 'li_coneisc'
+            'active' => 'li_eventos'
+        );
+        $this->load->view('index', $data);
+    }
+    
+    public function campeonato_deportivo() {
+        $data = array(
+            'contenido' => 'web/campeonato.php',
+            'active' => 'li_eventos'
         );
         $this->load->view('index', $data);
     }
@@ -37,7 +45,7 @@ class web extends Main_Controller {
     public function mision_vision() {
         $data = array(
             'contenido' => 'web/mv.php',
-            'active' => 'li_nosotros'
+            'active' => 'li_coneisc'
         );
         $this->load->view('index', $data);
     }
@@ -45,7 +53,7 @@ class web extends Main_Controller {
     public function comision_organizadora() {
         $data = array(
             'contenido' => 'web/co.php',
-            'active' => 'li_nosotros'
+            'active' => 'li_coneisc'
         );
         $this->load->view('index', $data);
     }
@@ -53,7 +61,23 @@ class web extends Main_Controller {
     public function papers() {
         $data = array(
             'contenido' => 'web/papers.php',
-            'active' => 'li_papers'
+            'active' => 'li_concursos'
+        );
+        $this->load->view('index', $data);
+    }
+    
+    public function concurso_programacion() {
+        $data = array(
+            'contenido' => 'web/con_prog.php',
+            'active' => 'li_concursos'
+        );
+        $this->load->view('index', $data);
+    }
+    
+    public function concurso_proyectos_investigacion() {
+        $data = array(
+            'contenido' => 'web/con_pi.php',
+            'active' => 'li_concursos'
         );
         $this->load->view('index', $data);
     }
@@ -114,6 +138,28 @@ class web extends Main_Controller {
             'active' => 'li_costos'
         );
         $this->load->view('index', $data);
+    }
+    
+    public function seleccionar_cc() {
+        $this->load->model('hc_model');
+        $costos = $this->hc_model->getCC($_POST);
+        $lista = "<table cellpadding='5' align='center' class='text-center'>";
+        foreach ($costos->result_array() as $row) {
+            $lista .= "<tr>";
+            $lista .= "<td><p class='text-left'>".utf8_encode($row['nombre'])."</p></td>";
+            $lista .= '<td><a href="javascript:void(0)" onclick="hoteles(\''.$row['id'].'\')" class="btn btn-small btn-success">Ver</a></td>';
+            $lista .= "</tr>";
+        }
+        $lista .= "</table>";
+        echo $lista;
+    }
+    
+    
+    public function seleccionar_h() {
+        $this->load->model('hc_model');
+        $costos = $this->hc_model->getCC($_POST);
+        $lista = "";
+        echo $lista;
     }
 
 }
