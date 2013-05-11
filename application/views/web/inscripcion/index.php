@@ -56,9 +56,11 @@
         <div class="row-fluid">
             <h2>Inscripción</h2>
             <div class="span8">
-                <h3>Cronograma de Inscripcion</h3>
-                <div style="text-align:center">
-                    <div class="image_wrapper">
+                <div class="text-center">
+                    <img src="<?php echo base_url() ?>assets/img/cuentas.jpg" class="img-polaroid" alt="Cuenta" />
+                </div>
+                <div class="text-center">
+                    <div class="page">
                         <img src="<?php echo base_url() ?>assets/img/costo inscripcion.png" class="img-polaroid" alt="Costo de Inscripcion" />
                     </div>
                 </div>
