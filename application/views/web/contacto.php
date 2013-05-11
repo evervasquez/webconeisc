@@ -2,7 +2,7 @@
     <div class="navbar-inner">
         <div class="page-header">
             <h2>CONTÁCTENOS</h2>
-            <p class="text-justify">Si tienes alguna duda o deseas informarte más sobre el XXI CONEISC Tarapoto 2013 comuníquese con nosotros.</p>
+            <p class="text-justify">Si tienes alguna duda o deseas informarte más sobre el XXI CONEISC Tarapoto 2013 comunicate con nosotros.</p>
         </div>
         <div class="row-fluid">
             <div class="span1"></div>
@@ -13,7 +13,7 @@
                         'id' => 'frmContacto',
                         'class' => 'form-inline'
                     );  
-                    $publickey = '6LdkseASAAAAAMSTcqJDLii37ZVm47H8-vzQshzd'; 
+                    $publickey = '6LdzlOASAAAAADDV6HFsO0LWaUtGORyFezMvUteF'; 
                  ?>
                  <?php echo form_open(base_url() . 'web/contactenoss',$frm) ?>
                     <div class="control-group">

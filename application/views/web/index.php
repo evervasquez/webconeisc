@@ -38,7 +38,7 @@
                             <div class="span4 page_slide cont_slide">
                                 <h2>Costos de vida</h2>
                                 <p class="text-justify pslide">Contáctate con hoteles y restaurantes de la ciudad de Tarapoto, cotiza y planifica tu viaje.</p>
-                                <a class="btn btn-large btn-primary" href="web/costos_vida/">Acceder</a>
+                                <a class="btn btn-large btn-primary" href="web/costos_generales/">Acceder</a>
                             </div>
                             <div class="span1"></div>
                         </div>

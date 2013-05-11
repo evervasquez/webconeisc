@@ -38,7 +38,7 @@
                         <option value="Hosteria">Hosteria</option>
                     </select>
                 </div>
-                <div><strong>Nota: Los precios son referenciales y orientados a grupos</strong></div>
+                <div><strong>Nota: Los precios son referenciales, costo por persona y orientados a grupos</strong></div>
                 <br/>
                 <div class="page">
                     <a href="javascript:void"  onclick="window.open('<?php echo base_url() ?>assets/docs/LISTADO DE HOTELES OFICIAL.xlsx')" class="btn btn-primary">Descargar Lista Completa de Hoteles</a>

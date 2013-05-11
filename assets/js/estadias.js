@@ -1,6 +1,7 @@
 
 !function ($) {
     $(function(){
+        $("#sel_hosp").val(0);
         function salir(){
             $("#modal").fadeOut(300);
             $("#fondooscuro").fadeOut(300);

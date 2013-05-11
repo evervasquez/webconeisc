@@ -92,7 +92,7 @@ class web extends Main_Controller {
     
     function verifica_captcha() {
             //aquí debemos la clave privada que recaptcha nos ha dado
-        $privatekey = "6LdkseASAAAAAFMNTe65nOe_3mQqociRNbSeZWnA";
+        $privatekey = "6LdzlOASAAAAAAXpefz1vj323RViW0v9XzwBcENP";
         $resp = recaptcha_check_answer ($privatekey,
                                         $_SERVER["REMOTE_ADDR"],
                                         $this->input->post("recaptcha_challenge_field"),
@@ -184,7 +184,7 @@ class web extends Main_Controller {
             if($row['costo-s'] != ''){
                 $lista .= "<tr>";
                 $lista .= "<td>Costo de Habitación Simple</td>";
-                $lista .= "<td class='text-center'>S/.{$row['costo-s']}.00</td>";
+                $lista .= "<td class='text-center'>S/.{$row['costo-s']}</td>";
                 $lista .= "</tr>";
             }
             if($row['costo-d'] != ''){
