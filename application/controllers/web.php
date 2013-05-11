@@ -88,7 +88,7 @@ class web extends Main_Controller {
             $this->form_validation->set_rules('nombre', 'Nombre','required|xss_clean');
             $this->form_validation->set_rules('email', 'Email','required|valid_email');
             $this->form_validation->set_rules('asunto', 'Asunto','required|xss_clean');
-            $this->form_validation->set_rules('text', 'Text','required|xss_clean');
+            $this->form_validation->set_rules('text', 'Mensaje','required|xss_clean');
             $this->form_validation->set_rules('recaptcha_response_field', 'codigo captcha','callback_verifica_captcha|xss_clean');
  
             $this->form_validation->set_message('required', 'El %s es requerido');

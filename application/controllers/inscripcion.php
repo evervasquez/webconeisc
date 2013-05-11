@@ -118,26 +118,32 @@ class inscripcion extends Main_Controller {
             $idmd5 = $_POST['email'].uniqid();
             $idmd5 = md5( md5( md5($idmd5)));
             array_push($_POST, $idmd5);
-//            echo '<pre>';print_r($_POST);exit;
+            $search  = array('á', 'é', 'í', 'ó', 'ú', 'ñ');
+            $replace = array('Á', 'É', 'Í', 'Ó', 'Ú', 'Ñ');
+            $_POST['nombres'] = str_replace($search, $replace, strtoupper($_POST['nombres']) );
+            $_POST['apellidos'] = str_replace($search, $replace, strtoupper($_POST['apellidos']));
             $resultado = $this->inscripcion_model->insertInscripcion($_POST);
             if($resultado['estado']){
                 //Obtenemos los datos
                 $email=$_POST['email'];
-                $usuario=$_POST['nombres'].' '.$_POST['apellidos'];
-                $cuerpo = "<p>El usuario «{$usuario}» del CONEISC (probablemente tú mismo)<br/>
-                                ha registrado esta dirección e-mail como suya.<br/><br/>
-
-                                Para confirmar su registro y que esta dirección e-mail <br/>
-                                está realmente asociada a esta cuenta, sigue el siguiente enlace:<br/><br/>
-
-                                <a href='http://{$_SERVER['HTTP_HOST']}/inscripcion/confirmarEmail/$idmd5' target='_blank'>http://{$_SERVER['HTTP_HOST']}/inscripcion/confirmarEmail/$idmd5</a>  <br/><br/>
-                                <br/>   
-                                Atentamente.
-                                <br/>
-                                XXI CONEISC
-                                <br/>
-                                Tarapoto 2013 
-                            </p>";
+                $usuario=  $_POST['nombres'].' '.$_POST['apellidos'];
+                $cuerpo = "<p>Estimado(a) «{$usuario}», le informamos que su cuenta de e-mail ha 
+                            sido registrada en el XXI CONEISC Tarapoto 2013.</p>
+                            
+                           <p>Para confirmar su inscripción en el evento siga el siguiente enlace.<br/>
+                           <a href='http://{$_SERVER['HTTP_HOST']}/inscripcion/confirmarEmail/$idmd5' 
+                               target='_blank'>http://{$_SERVER['HTTP_HOST']}/inscripcion/confirmarEmail/$idmd5</a></p>
+                                   
+                           <p>Así mismo te invitamos a que no dejes de seguirnos por el fan page:<br/>
+                           <a href='http://www.facebook.com/xxiconeisc'target='_blank'>http://www.facebook.com/xxiconeisc</a></p>
+                          
+                           <p>y la web oficial:<br/>
+                           <a href='http://www.coneisc.pe'target='_blank'>http://www.coneisc.pe</a><br/>
+                           Por dichos medios se estarán dando a conocer las últimas novedades del evento.</p>
+                           
+                           <p>Agradecemos su interés en el XXI CONEISC, </p>
+                           
+                           <p>ATT. La Comisión Organizadora XXI CONEISC Tarapoto 2013.</p>";
                 //Cargamos la librería
                 $this->load->library('email');
                 //Configuramos 

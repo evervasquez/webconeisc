@@ -27,7 +27,7 @@
                                 <div class="control-group">
                                     <label for="nombres" class="control-label" >Nombres:</label>
                                     <div class="controls">
-                                        <input type="text" id="nombres" name="nombres" maxlength="45" class="span10" <?php if (isset($nombres)) {?> value="<?php echo $nombres;?>" <?php } ?> style="text-transform: uppercase"/>
+                                        <input type="text" id="nombres" name="nombres" maxlength="50" class="span10" <?php if (isset($nombres)) {?> value="<?php echo $nombres;?>" <?php } ?> style="text-transform: uppercase"/>
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -39,14 +39,14 @@
                                 <div class="control-group">
                                     <label for="email" class="control-label">E-mail:</label>
                                     <div class="controls">
-                                        <input type="text" id="email" name="email" class="span10" value="<?php echo $email?>" maxlength="45" style="font-size: 20px;font-weight: bold"/>
+                                        <input type="text" id="email" name="email" class="span10" value="<?php echo $email?>" maxlength="60" style="font-size: 20px;font-weight: bold"/>
                                         <div id="loadEmail" style="max-width: 240px;min-height: 20px; margin: 0;"></div>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label for="confirma_email" class="control-label">Confirma E-mail:</label>
                                     <div class="controls">
-                                        <input type="text" id="confirma_email" class="span10" maxlength="45" style="font-size: 20px;font-weight: bold"/>
+                                        <input type="text" id="confirma_email" class="span10" maxlength="60" style="font-size: 20px;font-weight: bold"/>
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -59,7 +59,7 @@
                                 <div class="control-group">
                                     <label for="telefono" class="control-label">Telefono/Cel:</label>
                                     <div class="controls">
-                                        <input type="text" id="telefono" name="telefono" class="span10" maxlength="40"/>
+                                        <input type="text" id="telefono" name="telefono" class="span10" maxlength="20"/>
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -136,7 +136,7 @@
                                 <div class="control-group">
                                     <label for="nro_operacion" class="control-label">N° Transacción:</label>
                                     <div class="controls">
-                                        <input type="text" id="nro_operacion" name="nro_operacion" class="span10" maxlength="10"/>
+                                        <input type="text" id="nro_operacion" name="nro_operacion" class="span10" maxlength="15"/>
                                         <div id="loadNro_operacion" style="max-width:240px;min-height: 20px; margin: 0;"></div>
                                     </div>
                                 </div>

@@ -13,11 +13,8 @@ class inscripcion_model extends CI_Model{
         if (isset($datos['idinstitucion'])) {$idinstitucion = $datos["idinstitucion"];} else {$idinstitucion = null;}
         if (isset($datos['institucion'])) {$institucion = $datos["institucion"];} else {$institucion = null;}
         if (isset($datos['idusuario'])) {$idusuario = $datos["idusuario"];} else {$idusuario = null;}
-        //Convertimos a mayúsculas nombres y apellidos
-        $search  = array('á', 'é', 'í', 'ó', 'ú', 'ñ');
-        $replace = array('Á', 'É', 'Í', 'Ó', 'Ú', 'Ñ');
-        $nombres = str_replace($search, $replace, strtoupper($datos["nombres"]) );
-        $apellidos = str_replace($search, $replace, strtoupper($datos["apellidos"]));
+        $nombres = $datos["nombres"];
+        $apellidos = $datos["apellidos"];
         $dni = $datos["dni"];
         $sexo = $datos["sexo"];
         $fecha_inscripcion = date('Y-m-d');
