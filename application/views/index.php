@@ -77,20 +77,34 @@
                                         <a href="javascript:void" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-ok"></i> XXI Coneisc<b class="caret"></b></a>
                                         <ul class="dropdown-menu">
                                             <li><a href="<?php echo base_url() ?>web/presentacion"><i class="icon-forward"></i> Presentación</a></li>
-                                            <li><a href="<?php echo base_url() ?>web/cronograma"><i class="icon-calendar"></i> Cronograma</a></li>
-                                        </ul>
-                                    </li>
-                                    <li id="li_nosotros" class="dropdown">
-                                        <a href="javascript:void" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-thumbs-up"></i> Nosotros<b class="caret"></b></a>
-                                        <ul class="dropdown-menu">
                                             <li><a href="<?php echo base_url() ?>web/mision_vision"><i class="icon-globe"></i> Misión y Visión</a></li>
                                             <li><a href="<?php echo base_url() ?>web/comision_organizadora"><i class="icon-user"></i> Comisión Organizadora</a></li>
                                         </ul>
                                     </li>
-                                    <li id="li_papers"><a href="<?php echo base_url() ?>web/papers"><i class="icon-briefcase"></i> Papers</a></li>
-<!--                                    <li><a href="#"><i class="icon-tasks"></i> Eventos</a></li>-->
+                                    <li id="li_concursos" class="dropdown">
+                                        <a href="javascript:void" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-fire"></i> Concursos<b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="<?php echo base_url() ?>web/papers"><i class="icon-briefcase"></i> Papers</a></li>
+                                            <li><a href="<?php echo base_url() ?>web/concurso_programacion"><i class="icon-th"></i> Concurso de Programación</a></li>
+                                            <li><a href="<?php echo base_url() ?>web/concurso_proyectos_investigacion"><i class="icon-th-list"></i> Concurso de Proyectos de Investigación</a></li>
+                                        </ul>
+                                    </li>
+                                    <li id="li_eventos" class="dropdown">
+                                        <a href="javascript:void" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-thumbs-up"></i> Eventos<b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="<?php echo base_url() ?>web/cronograma"><i class="icon-calendar"></i> Cronograma</a></li>
+                                            <li><a href="<?php echo base_url() ?>web/campeonato_deportivo"><i class="icon-flag"></i> Campeonato Deportivo</a></li>
+                                        </ul>
+                                    </li>
                                     <li id="li_inscripcion"><a href="<?php echo base_url() ?>inscripcion"><i class="icon-pencil"></i> Inscripción</a></li>
-                                    <li id="li_costos"><a href="<?php echo base_url() ?>web/costos_vida"><i class="icon-shopping-cart"></i> Costos de Vida</a></li>
+                                    <li id="li_costos" class="dropdown">
+                                        <a href="javascript:void" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-shopping-cart"></i> Costos de Vida<b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="<?php echo base_url() ?>web/costos_generales"><i class="icon-list"></i> Costos Generales</a></li>
+                                            <li><a href="<?php echo base_url() ?>web/estadias"><i class="icon-road"></i> Estadías</a></li>
+                                            <li><a href="<?php echo base_url() ?>web/restaurantes"><i class="icon-glass"></i> Restaurantes</a></li>
+                                        </ul>
+                                    </li>
                                     <li id="li_galeria"><a href="<?php echo base_url() ?>galeria"><i class="icon-picture"></i> Galería</a></li>
                                     <li id="li_contacto"><a href="<?php echo base_url() ?>web/contactenos"><i class="icon-envelope"></i> Contáctenos</a></li>
                                 </ul>
