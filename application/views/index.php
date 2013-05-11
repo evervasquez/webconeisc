@@ -43,6 +43,7 @@
             </div>
         </div>
         <link rel="stylesheet" href="<?php echo base_url()?>assets/css/main.css">
+        <script src="<?php echo base_url()?>assets/js/jquery.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="<?php echo base_url() ?>assets/js/jquery.js"><\/script>')</script>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
@@ -96,7 +97,14 @@
                                         </ul>
                                     </li>
                                     <li id="li_inscripcion"><a href="<?php echo base_url() ?>inscripcion"><i class="icon-pencil"></i> Inscripción</a></li>
-                                    <li id="li_costos"><a href="<?php echo base_url() ?>web/costos_vida"><i class="icon-shopping-cart"></i> Costos de Vida</a></li>
+                                    <li id="li_costos" class="dropdown">
+                                        <a href="javascript:void" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-shopping-cart"></i> Costos de Vida<b class="caret"></b></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="<?php echo base_url() ?>web/costos_generales"><i class="icon-list"></i> Costos Generales</a></li>
+                                            <li><a href="<?php echo base_url() ?>web/estadias"><i class="icon-road"></i> Estadías</a></li>
+                                            <li><a href="<?php echo base_url() ?>web/restaurantes"><i class="icon-glass"></i> Restaurantes</a></li>
+                                        </ul>
+                                    </li>
                                     <li id="li_galeria"><a href="<?php echo base_url() ?>galeria"><i class="icon-picture"></i> Galería</a></li>
                                     <li id="li_contacto"><a href="<?php echo base_url() ?>web/contactenos"><i class="icon-envelope"></i> Contáctenos</a></li>
                                 </ul>
