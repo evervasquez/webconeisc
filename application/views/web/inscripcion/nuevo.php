@@ -42,7 +42,7 @@
                                 <div class="control-group">
                                     <label for="email" class="control-label">E-mail:</label>
                                     <div class="controls">
-                                        <input type="text" id="email" name="email" class="input-xlarge" value="<?php echo $email?>" maxlength="45" style="font-size: 20px;font-weight: bold"/>
+                                        <input type="text" id="email" name="email" class="input-xlarge"<?php if (isset($email)) {?> value="<?php echo $email?>" maxlength="45" <?php } ?> style="font-size: 20px;font-weight: bold"/>
                                         <div id="loadEmail" style="max-width: 230px;min-height: 20px; margin: 0;"></div>
                                     </div>
                                 </div>
@@ -174,7 +174,7 @@
                                 <h4>Puede registrarse también con:</h4>
                                 <ul id="social-login-forms">
                                     <li>
-                                        <form class="connect-button" name="login" method="POST" action="<?php echo base_url() ?>social/facebook">
+                                        <form class="connect-button" name="login" method="POST" action="<?php //echo base_url() ?>social/facebook">
                                             <input type="hidden" name="next" value="/account/dispatch/">
                                             <button type="submit" class="aui-button aui-style facebook-button">
                                                 Facebook
@@ -182,7 +182,7 @@
                                         </form>
                                     </li>
                                     <li>
-                                        <form class="connect-button" name="login" method="POST" action="<?php echo base_url() ?>social/twitter">
+                                        <form class="connect-button" name="login" method="POST" action="<?php //echo base_url() ?>social/twitter">
                                             <input type="hidden" name="next" value="/account/dispatch/">
                                             <button type="submit" class="aui-button aui-style twitter-button">
                                                 Twitter

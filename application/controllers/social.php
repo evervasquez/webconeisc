@@ -57,7 +57,7 @@ class social extends CI_Controller {
 
         /* twredirect() parameter - callback point in your application */
         /* by default the path from config file will be used */
-        $ok = $this->twconnect->twredirect('twtest/callback');
+        $ok = $this->twconnect->twredirect('social/callback');
 
         if (!$ok) {
             echo 'Could not connect to Twitter. Refresh the page or try again later.';
@@ -94,21 +94,51 @@ class social extends CI_Controller {
         // twaccount_verify_credentials returns the same information
         $this->twconnect->twaccount_verify_credentials();
 
-        $twitter_user = $this->twconnect->tw_user_info;
+        $twitter_user = (array) $this->twconnect->tw_user_info;
         
-        $cadena_nombres = explode(" ",$twitter_user);
+        $cadena_nombres = explode(" ",$twitter_user['name']);
         $num_nombres = count($cadena_nombres);
         
-        if($num_nombres==1){
+        if($num_nombres==2){
             $data['nombres'] = $cadena_nombres[0];
             $data['apellidos'] = $cadena_nombres[1];
-        }if($num_nombres==2){
+        }if($num_nombres==3){
             $data['nombres'] = $cadena_nombres[0]." ".$cadena_nombres[1];
             $data['apellidos'] = $cadena_nombres[2];
-        }if($num_nombres==3){
+        }if($num_nombres==4){
             $data['nombres'] = $cadena_nombres[0]." ".$cadena_nombres[1];
             $data['apellidos'] = $cadena_nombres[2]." ".$cadena_nombres[3];
         }
+        
+        $this->load->model('departamento_model');
+            $departamentos = $this->departamento_model->getDepartamentos();
+            $combo = "<select name='iddepartamento' id='iddepartamento' class='span11'>";
+            $combo .= "<option value=''> - - Seleccione - -</option>";
+            foreach ($departamentos->result_array() as $row) {
+                $combo.="<option value='{$row['iddepartamento']}'>{$row['descripcion']}</option>";
+            }
+            $combo .= "<option value='26'>Otro...</option>";
+            $combo .= "</select>";
+            $custom_imagen = explode("_", $twitter_user['profile_image_url']);
+            $num1 = count($custom_imagen);
+            //echo $num1;
+           	$imagen ="";
+            for($i=0; $i<$num1-1;$i++){
+                $imagen = $imagen . $custom_imagen[$i];
+                 if($i!=$num1-2){
+                $imagen = $imagen."_";    
+                }
+            }
+            //echo $imagen;
+            $data['imagen'] = "<img src='".$imagen."'/>";
+            $data['departamento'] = $combo;
+            //$data['nombres'] = $dataFacebook['first_name'];
+            //$data['apellidos'] = $dataFacebook['last_name'];
+            //$data['sexo'] = $dataFacebook['gender'];
+            //$data['email'] = $dataFacebook['email'];
+            $data['active'] = 'li_inscripcion';
+            $data['contenido'] = 'web/inscripcion/nuevo.php';
+            $this->load->view('index', $data);
         
     }
 
