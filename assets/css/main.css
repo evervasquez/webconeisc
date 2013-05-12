@@ -5,6 +5,16 @@
 .imgsocial{
     padding: 3px;
 }
+#fondooscuro{
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display:none;
+    background-image: url('../img/negro.png');
+}
 /*.control-group select.input-xlarge{
     width: 285px;
 }*/
@@ -55,14 +65,12 @@ footer{
     text-align: justify;
 }
 .primary {
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   background-color: #0044cc;
   background-image: -moz-linear-gradient(top, #0088cc, #0044cc);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0044cc));
   background-image: -webkit-linear-gradient(top, #0088cc, #0044cc);
   background-image: -o-linear-gradient(top, #0088cc, #0044cc);
   background-image: linear-gradient(to bottom, #0088cc, #0044cc);
-  background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
 }
 .nvinner{
@@ -87,6 +95,9 @@ footer{
 #crs{
     width: 88%;
     margin: 0 auto;
+}
+#imgpago{
+    margin-top: 500px;
 }
 .carousel .container {
     position: relative;
@@ -152,6 +163,9 @@ footer{
     div.likeboxwrap {
         height: 116px;
     }
+    div.likeboxwrap#twitterfanbox{
+        height: 90px;
+    }
     #contact{
         margin-top: -40px;
     }
@@ -174,6 +188,9 @@ footer{
     }
     .page_slide{
         padding:  5px 10px;
+    }
+    #imgpago{
+        margin-top: 0;
     }
 }
 

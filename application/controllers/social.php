@@ -25,14 +25,13 @@ class social extends CI_Controller {
             $dataFacebook = $this->fbconnect->userData();
             $this->load->model('departamento_model');
             $departamentos = $this->departamento_model->getDepartamentos();
-            $combo = "<select name='iddepartamento' id='iddepartamento' class='span11'>";
+            $combo = "<select name='iddepartamento' id='iddepartamento' class='span10'>";
             $combo .= "<option value=''> - - Seleccione - -</option>";
             foreach ($departamentos->result_array() as $row) {
                 $combo.="<option value='{$row['iddepartamento']}'>{$row['descripcion']}</option>";
             }
             $combo .= "<option value='26'>Otro...</option>";
             $combo .= "</select>";
-            $data['imagen'] = "<img src='http://graph.facebook.com/" . $dataFacebook['id'] . "/picture?height=180&width=180'/>";
             $data['departamento'] = $combo;
             $data['nombres'] = $dataFacebook['first_name'];
             $data['apellidos'] = $dataFacebook['last_name'];
@@ -47,7 +46,7 @@ class social extends CI_Controller {
     // api de twitter
     public function twitter() {
         $this->load->library('twconnect');
-            redirect('social/clearsession');
+        redirect('social/clearsession');
     }
 
     /* redirect to Twitter for authentication */
@@ -85,7 +84,7 @@ class social extends CI_Controller {
     /* but you can just call this function, not necessarily redirect to it */
 
     public function success() {
-       // echo 'Twitter connect succeded<br/>';
+        // echo 'Twitter connect succeded<br/>';
         //echo '<p><a href="' . base_url() . 'social/clearsession">Do it again!</a></p>';
 
         $this->load->library('twconnect');
@@ -95,61 +94,60 @@ class social extends CI_Controller {
         $this->twconnect->twaccount_verify_credentials();
 
         $twitter_user = (array) $this->twconnect->tw_user_info;
-        
-        $cadena_nombres = explode(" ",$twitter_user['name']);
+
+        $cadena_nombres = explode(" ", $twitter_user['name']);
         $num_nombres = count($cadena_nombres);
-        
-        if($num_nombres==2){
+
+        if ($num_nombres == 2) {
             $data['nombres'] = $cadena_nombres[0];
             $data['apellidos'] = $cadena_nombres[1];
-        }if($num_nombres==3){
-            $data['nombres'] = $cadena_nombres[0]." ".$cadena_nombres[1];
+        }if ($num_nombres == 3) {
+            $data['nombres'] = $cadena_nombres[0] . " " . $cadena_nombres[1];
             $data['apellidos'] = $cadena_nombres[2];
-        }if($num_nombres==4){
-            $data['nombres'] = $cadena_nombres[0]." ".$cadena_nombres[1];
-            $data['apellidos'] = $cadena_nombres[2]." ".$cadena_nombres[3];
+        }if ($num_nombres == 4) {
+            $data['nombres'] = $cadena_nombres[0] . " " . $cadena_nombres[1];
+            $data['apellidos'] = $cadena_nombres[2] . " " . $cadena_nombres[3];
         }
-        
+
         $this->load->model('departamento_model');
-            $departamentos = $this->departamento_model->getDepartamentos();
-            $combo = "<select name='iddepartamento' id='iddepartamento' class='span11'>";
-            $combo .= "<option value=''> - - Seleccione - -</option>";
-            foreach ($departamentos->result_array() as $row) {
-                $combo.="<option value='{$row['iddepartamento']}'>{$row['descripcion']}</option>";
+        $departamentos = $this->departamento_model->getDepartamentos();
+        $combo = "<select name='iddepartamento' id='iddepartamento' class='span11'>";
+        $combo .= "<option value=''> - - Seleccione - -</option>";
+        foreach ($departamentos->result_array() as $row) {
+            $combo.="<option value='{$row['iddepartamento']}'>{$row['descripcion']}</option>";
+        }
+        $combo .= "<option value='26'>Otro...</option>";
+        $combo .= "</select>";
+        $custom_imagen = explode("_", $twitter_user['profile_image_url']);
+        $num1 = count($custom_imagen);
+        //echo $num1;
+        $imagen = "";
+        for ($i = 0; $i < $num1 - 1; $i++) {
+            $imagen = $imagen . $custom_imagen[$i];
+            if ($i != $num1 - 2) {
+                $imagen = $imagen . "_";
             }
-            $combo .= "<option value='26'>Otro...</option>";
-            $combo .= "</select>";
-            $custom_imagen = explode("_", $twitter_user['profile_image_url']);
-            $num1 = count($custom_imagen);
-            //echo $num1;
-           	$imagen ="";
-            for($i=0; $i<$num1-1;$i++){
-                $imagen = $imagen . $custom_imagen[$i];
-                 if($i!=$num1-2){
-                $imagen = $imagen."_";    
-                }
-            }
-            //echo $imagen;
-            $data['imagen'] = "<img src='".$imagen."'/>";
-            $data['departamento'] = $combo;
-            //$data['nombres'] = $dataFacebook['first_name'];
-            //$data['apellidos'] = $dataFacebook['last_name'];
-            //$data['sexo'] = $dataFacebook['gender'];
-            //$data['email'] = $dataFacebook['email'];
-            $data['active'] = 'li_inscripcion';
-            $data['contenido'] = 'web/inscripcion/nuevo.php';
-            $this->load->view('index', $data);
-        
+        }
+        //echo $imagen;
+        $data['imagen'] = "<img src='" . $imagen . "'/>";
+        $data['departamento'] = $combo;
+        //$data['nombres'] = $dataFacebook['first_name'];
+        //$data['apellidos'] = $dataFacebook['last_name'];
+        //$data['sexo'] = $dataFacebook['gender'];
+        //$data['email'] = $dataFacebook['email'];
+        $data['active'] = 'li_inscripcion';
+        $data['contenido'] = 'web/inscripcion/nuevo.php';
+        $this->load->view('index', $data);
     }
 
     /* authentication un-successful */
 
     public function failure() {
 
-       /// echo '<p>Twitter connect failed</p>';
-       // echo '<p><a href="' . base_url() .">Try again!</a></p>';
-       // echo "<script>alert('Ha sucedido un error al logearse a twitter\n Intentelo más tarde')</script>";
-       redirect(base_url());
+        /// echo '<p>Twitter connect failed</p>';
+        // echo '<p><a href="' . base_url() .">Try again!</a></p>';
+        // echo "<script>alert('Ha sucedido un error al logearse a twitter\n Intentelo más tarde')</script>";
+        redirect(base_url());
     }
 
     /* clear session */

@@ -1,5 +1,9 @@
 <div class="container">
     <div class="navbar-inner">
-        <h1><?php echo $mensaje ?></h1>
+        <div class="page-header">
+            <h3><?php echo $titulo ?></h3>
+        </div>
+        <p><?php echo $mensaje ?></p>
+        <br/>
     </div>
 </div>

@@ -12,12 +12,9 @@ class inscripcion_model extends CI_Model{
         if (isset($datos['idtipo_inscripcion'])) {$idtipo_inscripcion = $datos["idtipo_inscripcion"];} else {$idtipo_inscripcion = null;}
         if (isset($datos['idinstitucion'])) {$idinstitucion = $datos["idinstitucion"];} else {$idinstitucion = null;}
         if (isset($datos['institucion'])) {$institucion = $datos["institucion"];} else {$institucion = null;}
-        if (isset($datos['idempleado'])) {$idempleado = $datos["idempleado"];} else {$idempleado = null;}
-        //Convertimos a mayúsculas nombres y apellidos
-        $search  = array('á', 'é', 'í', 'ó', 'ú', 'ñ');
-        $replace = array('Á', 'É', 'Í', 'Ó', 'Ú', 'Ñ');
-        $nombres = str_replace($search, $replace, strtoupper($datos["nombres"]) );
-        $apellidos = str_replace($search, $replace, strtoupper($datos["apellidos"]));
+        if (isset($datos['idusuario'])) {$idusuario = $datos["idusuario"];} else {$idusuario = null;}
+        $nombres = $datos["nombres"];
+        $apellidos = $datos["apellidos"];
         $dni = $datos["dni"];
         $sexo = $datos["sexo"];
         $fecha_inscripcion = date('Y-m-d');
@@ -33,17 +30,10 @@ class inscripcion_model extends CI_Model{
         $telefono = $datos["telefono"];
         $email = $datos["email"];
         $estado = 0;
+        $idmd5 = $datos[0];
         
         //transaccion para guardar
         $this->db->trans_begin();
-        //ultimo ID
-        $this->db->select_max('idinscripcion');
-        $query = $this->db->get('inscripcion');
-        foreach ($query->result_array() as $value) {
-            $idMax = $value['idinscripcion']+1;
-        }
-        //idmd5
-        $idMD5 = md5(md5(md5($idMax)));
         //validamos los datos unicos
         $this->db->where('dni',$dni);
         $this->db->or_where('email',$email);
@@ -56,12 +46,12 @@ class inscripcion_model extends CI_Model{
             $msg = 'Error de duplicidad de datos';
         }else{
             $this->db->insert('inscripcion', array(
-                'idinscripcion'=>$idMax,
-                'idmd5'=>$idMD5,
+                'idinscripcion'=>null,
+                'idmd5'=>$idmd5,
                 'idtipo_inscripcion'=>$idtipo_inscripcion,
                 'idinstitucion'=>$idinstitucion,
                 'institucion'=>$institucion,
-                'idempleado'=>$idempleado,
+                'idusuario'=>$idusuario,
                 'nombres'=>$nombres,
                 'apellidos'=>$apellidos,
                 'dni'=>$dni,
@@ -76,8 +66,6 @@ class inscripcion_model extends CI_Model{
                 'email'=>$email,
                 'estado'=>$estado
             ));
-            $this->db->where('idinscripcion',$idMax);
-            $data = $this->db->get('inscripcion');
         }
         
         if ($error || $this->db->trans_status() === FALSE){
@@ -88,7 +76,7 @@ class inscripcion_model extends CI_Model{
             $return = array ('estado'=>false,'msg'=>$msg);
         }else{
             $this->db->trans_commit();
-            $return = array ('estado'=>true,'data'=>$data);
+            $return = array ('estado'=>true);
         }
         return $return;
     }

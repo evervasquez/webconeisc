@@ -35,6 +35,57 @@ class Fbconnect extends Facebook {
             }
     }
     
+    public function cargarAlbum($fan_pageid) {
+        $album = $this->api('/'.$fan_pageid.'/albums');
+        $albumes = '';
+//        $albumes .= '<ul>';
+        foreach ($album['data'] as $album) {
+//            $albumes .= '<li>Álbum: ' . $album['name'] . '</li>';
+
+            $albumes .= "<div style='display:inline-block;padding:10px;width:140px;max-height:180px;vertical-align:top'> ";
+
+            //recuperar fotos por albums
+            $photo = $this->api("/{$album['id']}/photos");
+            foreach ($photo['data'] as $photo) {
+                $albumes .= "<a title='" . $album['name'] . "' href='". base_url() ."galeria/album/".$album['id']."'><img src='{$photo['picture']}' class='img-polaroid' style='height:120px;width:120px' /></a>";
+                break;
+            }
+            $albumes .= '<br/><div>' . $album['name'];
+            $albumes .= '</div></div>';
+        }
+//        $albumes .= '</ul>';
+        
+        return $albumes;
+    }
+    
+    public function cargarFoto($idfoto, $fan_pageid) {
+        $album = $this->api('/'.$fan_pageid.'/albums');
+        $albumes = '';
+//        $albumes .= '<ul>';
+        foreach ($album['data'] as $album) {
+            if($album['id'] == $idfoto){
+//            $albumes .= '<li>Álbum: ' . $album['name'] . '</li>';
+
+                $albumes .= '<h4>Álbum: ' . $album['name'] . '</h4><br/>';
+                //recuperar fotos por albums
+                $photo = $this->api("/{$album['id']}/photos");
+                
+                $albumes .= '<div  id="gallery">';
+                foreach ($photo['data'] as $photo) {
+                        $albumes .= "<div style='display:inline-block;padding:10px;width:140px;height:150px'>";
+                        $albumes .= "<a rel='sexylightbox[kmx]' href='{$photo['source']}'>";
+                        $albumes .= "<img src='{$photo['picture']}' class='img-polaroid' style='height:120px;width:120px' />";
+                        $albumes .= "</a></div>";
+                }
+                $albumes .= '</div>';
+            }
+        }
+//        $albumes .= '</ul>';
+        
+        return $albumes;
+    }
+
+
     public function send_back($param) {
         return $param;
     }
