@@ -50,7 +50,7 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'mysql:host=localhost;port=3306';
 $db['default']['username'] = 'root';
-$db['default']['password'] = '';
+$db['default']['password'] = 'admin';
 $db['default']['database'] = 'bdconeisc';
 $db['default']['dbdriver'] = 'pdo';
 $db['default']['dbprefix'] = '';
