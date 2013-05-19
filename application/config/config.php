@@ -15,7 +15,7 @@
 |
 */
 //$config['base_url']	= '/webconeisc/';
-$config['base_url']	= 'http://'.$_SERVER['SERVER_NAME'];
+$config['base_url']	= 'http://'.$_SERVER['SERVER_NAME'].'/webconeisc/';
 /*
 |--------------------------------------------------------------------------
 | Content Delivery Network URL
