@@ -158,12 +158,19 @@ class web extends Main_Controller {
     
     public function seleccionar_cc() {
         $this->load->model('hc_model');
-        $costos = $this->hc_model->getCC($_POST);
+        $costos = $this->hc_model->getCC($_POST); 
+        $array = $this->object2array($costos);
+        echo json_encode($array);
+    }
+    
+    public function seleccionar_cc1() {
+        $this->load->model('hc_model');
+        $costos = $this->hc_model->getCC($_POST); 
         $lista = "<table class='table table-striped'>";
         foreach ($costos->result_array() as $row) {
             $lista .= "<tr>";
             $lista .= "<td><p class='text-left'>".utf8_encode($row['nombre'])."</p></td>";
-            $lista .= "<td><p class='text-left'>{$row['telefono']}</p></td>";
+           // $lista .= '<td><a href="javascript:void(0)" onclick="hoteles(\''.$row['id'].'\')" class="btn btn-small btn-success">Ver</a></td>';
             $lista .= '<td><a href="javascript:void(0)" onclick="hoteles(\''.$row['id'].'\')" class="btn btn-small btn-success">Ver</a></td>';
             $lista .= "</tr>";
         }
@@ -171,10 +178,17 @@ class web extends Main_Controller {
         echo $lista;
     }
     
-    
+    public function seleccionar_maps(){
+        $this->load->model('hc_model');
+        $costos = $this->hc_model->getEstadias();
+        $array = $this->object2array($costos);
+        echo json_encode($array);
+    }
+
     public function seleccionar_h() {
         $this->load->model('hc_model');
         $costos = $this->hc_model->getCC($_POST);
+      //  echo json_decode(array($costos));
         $lista = "<table cellpadding='5' align='center' class='text-left'>";
         foreach ($costos->result_array() as $row) {
             $lista .= "<tr>";
@@ -234,7 +248,7 @@ class web extends Main_Controller {
         $lista .= "</table>";
         echo $lista;
     }
-
+    
 }
 
 /* End of file web.php */

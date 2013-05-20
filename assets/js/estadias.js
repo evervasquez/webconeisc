@@ -6,12 +6,12 @@
             $("#modal").fadeOut(300);
             $("#fondooscuro").fadeOut(300);
         }
-       $(".close_modal").click(function(){
+        $(".close_modal").click(function(){
             salir();
-       });
-       $("#fondooscuro").click(function(){
+        });
+        $("#fondooscuro").click(function(){
             salir();
-       });
+        });
         document.onkeydown = function(evt) {
             evt = evt || window.event;
             if (evt.keyCode == 27) {
@@ -40,10 +40,116 @@
                     $("#load_hotel").hide();
                 }
             }
-            $("#sel_costo").change(function(){  
+            $("#sel_costo").change(function(){
                 $.ajax({
                     type:"POST",
                     url:url+'web/seleccionar_cc',
+                    data:{
+                        rango:$(this).val()
+                    },
+                    dataType: 'json',
+                    //                    beforeSend:function(){
+                    //                        $("#load_hotel").html('<img src="'+url+'assets/img/load.gif"/>').show();
+                    //                    },
+                    success:function(json){
+                        //                        $("#load_hotel").html(response).show();
+                        map = new GMaps({
+                            div: '#map',
+                            lat: -6.488618840362275,
+                            lng: -76.3645076751709,
+                            zoom: 14
+                        });
+                        map.addMarker({
+                            lat: -6.486486813731826,
+                            lng: -76.37927055358887,
+                            icon:'http://icons.iconarchive.com/icons/deleket/mac-folders/64/3D-Studio-Max-icon.png',
+                            title: 'UNSM-T',
+                            click: function(e) {
+                                alert('Lugar de Conferencia');
+                            }
+                        });
+
+                        for(i=0 ; i<json.num_rows;i++){
+                            map.addMarker({
+                                id: json.result_id[i].id,
+                                lat: json.result_id[i].latitud,
+                                lng: json.result_id[i].longitud,
+                                icon:'http://icons.iconarchive.com/icons/deleket/sleek-xp-basic/24/Home-icon.png',
+                                title: json.result_id[i].nombre,
+                                click: function(e) {
+                                    hoteles(this.id);
+                                }
+                            });
+                        }
+                    }
+                });
+            });
+            $("#sel_categoria").change(function(){
+                $.ajax({
+                    type:"POST",
+                    url:url+'web/seleccionar_cc',
+                    dataType: 'json',
+                    data:{
+                        categoria:$(this).val()
+                    },
+                    //                    beforeSend:function(){
+                    //                        $("#load_hotel").html('<img src="'+url+'assets/img/load.gif"/>').show();
+                    //                    },
+                    success:function(json){
+                        //                       $("#load_hotel").html(response).show();
+                        map = new GMaps({
+                            div: '#map',
+                            lat: -6.488618840362275,
+                            lng: -76.3645076751709,
+                            zoom: 14
+                        });
+                        map.addMarker({
+                            lat: -6.486486813731826,
+                            lng: -76.37927055358887,
+                            icon:'http://icons.iconarchive.com/icons/deleket/mac-folders/64/3D-Studio-Max-icon.png',
+                            title: 'UNSM-T',
+                            click: function(e) {
+                                alert('Lugar de Conferencia');
+                            }
+                        });
+
+                        for(i=0 ; i<json.num_rows;i++){
+                            map.addMarker({
+                                id: json.result_id[i].id,
+                                lat: json.result_id[i].latitud,
+                                lng: json.result_id[i].longitud,
+                                icon:'http://icons.iconarchive.com/icons/deleket/sleek-xp-basic/24/Home-icon.png',
+                                title: json.result_id[i].nombre,
+                                click: function(e) {
+                                    hoteles(this.id);
+                                }
+                            });
+                        }
+                    }
+                });
+            });
+            
+            ////////////////////////////////////////////
+            $("#sel_categoria").change(function(){
+                $.ajax({
+                    type:"POST",
+                    url:url+'web/seleccionar_cc1',
+                    data:{
+                        categoria:$(this).val()
+                    },
+                    beforeSend:function(){
+                        $("#load_hotel").html('<img src="'+url+'assets/img/load.gif"/>').show();
+                    },
+                    success:function(response){
+                        $("#load_hotel").html(response).show();                      
+                    }
+                });
+            });
+            
+            $("#sel_costo").change(function(){
+                $.ajax({
+                    type:"POST",
+                    url:url+'web/seleccionar_cc1',
                     data:{
                         rango:$(this).val()
                     },
@@ -55,21 +161,7 @@
                     }
                 });
             });
-            $("#sel_categoria").change(function(){  
-                $.ajax({
-                    type:"POST",
-                    url:url+'web/seleccionar_cc',
-                    data:{
-                        categoria:$(this).val()
-                    },
-                    beforeSend:function(){
-                        $("#load_hotel").html('<img src="'+url+'assets/img/load.gif"/>').show();
-                    },
-                    success:function(response){
-                        $("#load_hotel").html(response).show();
-                    }
-                });
-            });
+        //////////////////////////////
         });
     });
 }(window.jQuery);

@@ -18,4 +18,14 @@ class hc_model extends CI_Model{
         return $data;
     }
     
+    public function getEstadias(){
+        $data = $this->db->get('hoteles');
+        return $data;
+    }
+    
+    public function getHotel($id){
+       $this->db->where('id',$id); 
+       $data = $this->db->get('hoteles');
+       return $data;
+    }
 }
