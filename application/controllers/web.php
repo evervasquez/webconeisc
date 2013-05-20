@@ -171,6 +171,7 @@ class web extends Main_Controller {
             $lista .= "<tr>";
             $lista .= "<td><p class='text-left'>".utf8_encode($row['nombre'])."</p></td>";
            // $lista .= '<td><a href="javascript:void(0)" onclick="hoteles(\''.$row['id'].'\')" class="btn btn-small btn-success">Ver</a></td>';
+            $lista .= '<td><a href="javascript:void(0)" onclick="map_hoteles(\''.$row['id'].'\')" class="btn btn-small btn-primary"><i class="icon-map-marker icon-white" ></i></a></td>';
             $lista .= '<td><a href="javascript:void(0)" onclick="hoteles(\''.$row['id'].'\')" class="btn btn-small btn-success">Ver</a></td>';
             $lista .= "</tr>";
         }

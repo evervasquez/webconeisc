@@ -1,8 +1,9 @@
 <script type="text/javascript">var url = "<?php echo base_url() ?>"</script>
-<script type="text/javascript" src="<?php echo base_url() ?>assets/js/estadias.js"></script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
 <script type="text/javascript" src="https://raw.github.com/HPNeo/gmaps/master/gmaps.js"></script>
-<link href='http://fonts.googleapis.com/css?family=Convergence|Bitter|Droid+Sans' rel='stylesheet' type='text/css' />
+<script type="text/javascript" src="http://hpneo.github.io/gmaps/prettify/prettify.js"></script>
+<link href='http://hpneo.github.io/gmaps/prettify/prettify.css' rel='stylesheet' type='text/css' />
+<script type="text/javascript" src="<?php echo base_url() ?>assets/js/estadias.js"></script>
 
 <style type="text/css">
     .popin{
@@ -16,12 +17,37 @@
     }
     #map {
         height:400px;
-        background:#6699cc;
+
     }
     #filtro{
         top:0;
         right:0;
         width:200px;
+    }
+    .overlay{
+        text-align: match-parent;
+        color:#fff;
+        font-size:17px;
+        opacity:0.8;
+        background:#4477aa;
+        border:solid 3px #336699;
+        border-radius:4px;
+        box-shadow:2px 2px 10px #333;
+        text-shadow:1px 1px 1px #666;
+        padding:0 4px;
+    }
+    .overlay_arrow{
+        left:50%;
+        margin-left:-18px;
+        width:0;
+        height:0;
+        position:absolute;
+    }
+    .overlay_arrow.above{
+        bottom:-15px;
+        border-left:16px solid transparent;
+        border-right:16px solid transparent;
+        border-top:16px solid #336699;
     }
 </style> 
 <script type="text/javascript">
@@ -37,6 +63,7 @@
                     div: '#map',
                     lat: -6.488618840362275,
                     lng: -76.3645076751709,
+                    enableNewStyle: true,
                     zoom: 14
                 });
                 map.addMarker({
@@ -76,7 +103,7 @@
         <div class="row-fluid">         
             <div id="contenido">
                 <div class="popin">
-                    <div id="map" ></div>
+                    <div id="map"></div>
                 </div>
                 <div id="filtro" class="span4 text-center">
                     <div>

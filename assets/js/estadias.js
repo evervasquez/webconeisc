@@ -1,5 +1,6 @@
 
 !function ($) {
+    var map;
     $(function(){
         $("#sel_hosp").val(0);
         function salir(){
@@ -59,6 +60,7 @@
                             lng: -76.3645076751709,
                             zoom: 14
                         });
+                        setMap(map);
                         map.addMarker({
                             lat: -6.486486813731826,
                             lng: -76.37927055358887,
@@ -103,6 +105,7 @@
                             lng: -76.3645076751709,
                             zoom: 14
                         });
+                        setMap(map);
                         map.addMarker({
                             lat: -6.486486813731826,
                             lng: -76.37927055358887,
@@ -165,6 +168,7 @@
         });
     });
 }(window.jQuery);
+var mapa;
 function hoteles(id) {
     $.ajax({
         type:"POST",
@@ -181,4 +185,28 @@ function hoteles(id) {
             $("#modal").fadeIn(200);
         }
     });
+}
+
+function map_hoteles(id){
+    $.ajax({
+        type:"POST",
+        url:url+'web/seleccionar_cc',
+        dataType: 'json',
+        data:{
+            id:id
+        },
+        success:function(json){
+
+            mapa.drawOverlay({
+                lat: json.result_id[0].latitud,
+                lng: json.result_id[0].longitud,
+                content: '<div class="overlay">'+json.result_id[0].nombre+'<div class="overlay_arrow above"></div></div>',
+                verticalAlign: 'top',
+                verticalOffset: -40
+            });
+        }
+    }); 
+}
+function setMap(map){
+    mapa = map;
 }
