@@ -82,55 +82,55 @@ class web extends Main_Controller {
         $this->load->view('index', $data);
     }
     
-    public function contactenos() {
-        $data = array(
-            'contenido' => 'web/contacto.php',
-            'active' => 'li_contacto'
-        );
-        $this->load->view('index', $data);
-    }
-    
-    function verifica_captcha() {
-            //aquí debemos la clave privada que recaptcha nos ha dado
-        $privatekey = "6LdzlOASAAAAAAXpefz1vj323RViW0v9XzwBcENP";
-        $resp = recaptcha_check_answer ($privatekey,
-                                        $_SERVER["REMOTE_ADDR"],
-                                        $this->input->post("recaptcha_challenge_field"),
-                                        $this->input->post("recaptcha_response_field"));
- 
-          if (!$resp->is_valid) {
-            $this->form_validation->set_message('verifica_captcha','El %s es incorrecto');
-                 return FALSE;
-          } else {
- 
-          }
-    }
-        
-    function contactenoss() {
-        if(isset($_POST['registro']) and $_POST['registro'] == 'si')
-        {
-            $this->form_validation->set_rules('nombre', 'Nombre','required|xss_clean');
-            $this->form_validation->set_rules('email', 'Email','required|valid_email');
-            $this->form_validation->set_rules('asunto', 'Asunto','required|xss_clean');
-            $this->form_validation->set_rules('text', 'Mensaje','required|xss_clean');
-            $this->form_validation->set_rules('recaptcha_response_field', 'codigo captcha','callback_verifica_captcha|xss_clean');
- 
-            $this->form_validation->set_message('required', 'El %s es requerido');
- 
-            if (!$this->form_validation->run())
-            {
-                $this->contactenos();
-            }
-            else
-            {
-                $this->contacto();
-            }
-        }
-    }
-    
-    public function contacto(){
-        $this->load->view('web/contact.php');
-    }
+//    public function contactenos() {
+//        $data = array(
+//            'contenido' => 'web/contacto.php',
+//            'active' => 'li_contacto'
+//        );
+//        $this->load->view('index', $data);
+//    }
+//    
+//    function verifica_captcha() {
+//            //aquí debemos la clave privada que recaptcha nos ha dado
+//        $privatekey = "6LdzlOASAAAAAAXpefz1vj323RViW0v9XzwBcENP";
+//        $resp = recaptcha_check_answer ($privatekey,
+//                                        $_SERVER["REMOTE_ADDR"],
+//                                        $this->input->post("recaptcha_challenge_field"),
+//                                        $this->input->post("recaptcha_response_field"));
+// 
+//          if (!$resp->is_valid) {
+//            $this->form_validation->set_message('verifica_captcha','El %s es incorrecto');
+//                 return FALSE;
+//          } else {
+// 
+//          }
+//    }
+//        
+//    function contactenoss() {
+//        if(isset($_POST['registro']) and $_POST['registro'] == 'si')
+//        {
+//            $this->form_validation->set_rules('nombre', 'Nombre','required|xss_clean');
+//            $this->form_validation->set_rules('email', 'Email','required|valid_email');
+//            $this->form_validation->set_rules('asunto', 'Asunto','required|xss_clean');
+//            $this->form_validation->set_rules('text', 'Mensaje','required|xss_clean');
+//            $this->form_validation->set_rules('recaptcha_response_field', 'codigo captcha','callback_verifica_captcha|xss_clean');
+// 
+//            $this->form_validation->set_message('required', 'El %s es requerido');
+// 
+//            if (!$this->form_validation->run())
+//            {
+//                $this->contactenos();
+//            }
+//            else
+//            {
+//                $this->contacto();
+//            }
+//        }
+//    }
+//    
+//    public function contacto(){
+//        $this->load->view('web/contact.php');
+//    }
 
     public function costos_generales() {
         $data = array(
