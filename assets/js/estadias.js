@@ -165,6 +165,49 @@
                 });
             });
         //////////////////////////////
+         $("#sel_hosp").change(function(){
+            var inicio = document.getElementById('sel_hosp').value;
+            if(inicio == 0){
+                $.ajax({
+                    type:"POST",
+                    url:url+'web/seleccionar_maps',
+                    dataType : 'json',
+                    success:function(json){
+                        // alert(json.result_id[1].latitud);
+                        map = new GMaps({
+                            div: '#map',
+                            lat: -6.488618840362275,
+                            lng: -76.3645076751709,
+                            enableNewStyle: true,
+                            zoom: 14
+                        });
+                        map.addMarker({
+                            lat: -6.486486813731826,
+                            lng: -76.37927055358887,
+                            icon:'http://icons.iconarchive.com/icons/deleket/mac-folders/64/3D-Studio-Max-icon.png',
+                            title: 'UNSM-T',
+                            click: function(e) {
+                        
+                            }
+                        });
+                    
+                        for(i=0 ; i<json.num_rows;i++){                    
+                            map.addMarker({
+                                id : json.result_id[i].id,
+                                lat: json.result_id[i].latitud,
+                                lng: json.result_id[i].longitud,
+                                icon:'http://icons.iconarchive.com/icons/deleket/sleek-xp-basic/24/Home-icon.png',
+                                title: json.result_id[i].nombre,
+                                click: function(e) {
+                                    hoteles(this.id);
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+        })
+        /////////////////////////////////////////////////
         });
     });
 }(window.jQuery);

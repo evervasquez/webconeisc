@@ -52,7 +52,8 @@
 </style> 
 <script type="text/javascript">
     var map;
-    $(document).ready(function(){ 
+    $(document).ready(function(){
+       
         $.ajax({
             type:"POST",
             url:url+'web/seleccionar_maps',
@@ -108,7 +109,7 @@
                 <div id="filtro" class="span4 text-center">
                     <div>
                         <select id="sel_hosp">
-                            <option>---</option>
+                            <option value="0">---</option>
                             <option value="1">Por Costo</option>
                             <option value="2">Por Categoria</option>
                         </select>
