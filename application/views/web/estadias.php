@@ -1,6 +1,6 @@
 <script type="text/javascript">var url = "<?php echo base_url() ?>"</script>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
-<script type="text/javascript" src="https://raw.github.com/HPNeo/gmaps/master/gmaps.js"></script>
+<script type="text/javascript" src="<?php echo base_url() ?>/assets/js/gmaps.js"></script>
 <script type="text/javascript" src="http://hpneo.github.io/gmaps/prettify/prettify.js"></script>
 <link href='http://hpneo.github.io/gmaps/prettify/prettify.css' rel='stylesheet' type='text/css' />
 <script type="text/javascript" src="<?php echo base_url() ?>assets/js/estadias.js"></script>
@@ -98,11 +98,15 @@
     <div class="navbar-inner">
         <div class="page-header">
             <h3>ESTADÍAS</h3>
-            <h4 style="text-align: right">Busque donde alojarse:</h4>
+            <div><strong>Nota: Los precios son referenciales, costo por persona y orientados a grupos</strong></div>
+                <div class="page">
+                    <a href="javascript:void"  onclick="window.open('<?php echo base_url() ?>assets/docs/LISTADO DE HOTELES OFICIAL.xlsx')" class="btn btn-primary">Descargar Lista Completa de Hoteles</a>
+                </div>
+            <h4 style="text-align: right; margin-top: -40px">Busque donde alojarse:</h4>
         </div>
-
         <div class="row-fluid">         
             <div id="contenido">
+                
                 <div class="popin">
                     <div id="map"></div>
                 </div>
@@ -159,10 +163,6 @@
                 <div id="fondooscuro"></div>
                 <br/>
             </div>
-        </div>
-        <div><strong>Nota: Los precios son referenciales, costo por persona y orientados a grupos</strong></div>
-        <div class="page">
-            <a href="javascript:void"  onclick="window.open('<?php echo base_url() ?>assets/docs/LISTADO DE HOTELES OFICIAL.xlsx')" class="btn btn-primary">Descargar Lista Completa de Hoteles</a>
         </div>
     </div>
 </div>
