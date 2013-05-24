@@ -58,13 +58,13 @@
                             div: '#map',
                             lat: -6.488618840362275,
                             lng: -76.3645076751709,
-                            zoom: 14
+                            zoom: 15
                         });
                         setMap(map);
                         map.addMarker({
                             lat: -6.486486813731826,
                             lng: -76.37927055358887,
-                            icon:'http://icons.iconarchive.com/icons/deleket/mac-folders/64/3D-Studio-Max-icon.png',
+                            icon:'http://img842.imageshack.us/img842/3420/logomap.png',
                             title: 'UNSM-T',
                             click: function(e) {
                                 alert('Lugar de Conferencia');
@@ -103,13 +103,13 @@
                             div: '#map',
                             lat: -6.488618840362275,
                             lng: -76.3645076751709,
-                            zoom: 14
+                            zoom: 15
                         });
                         setMap(map);
                         map.addMarker({
                             lat: -6.486486813731826,
                             lng: -76.37927055358887,
-                            icon:'http://icons.iconarchive.com/icons/deleket/mac-folders/64/3D-Studio-Max-icon.png',
+                            icon:'http://img842.imageshack.us/img842/3420/logomap.png',
                             title: 'UNSM-T',
                             click: function(e) {
                                 alert('Lugar de Conferencia');
@@ -179,12 +179,12 @@
                             lat: -6.488618840362275,
                             lng: -76.3645076751709,
                             enableNewStyle: true,
-                            zoom: 14
+                            zoom: 15
                         });
                         map.addMarker({
                             lat: -6.486486813731826,
                             lng: -76.37927055358887,
-                            icon:'http://icons.iconarchive.com/icons/deleket/mac-folders/64/3D-Studio-Max-icon.png',
+                            icon:'http://img842.imageshack.us/img842/3420/logomap.png',
                             title: 'UNSM-T',
                             click: function(e) {
                         
